@@ -6,7 +6,14 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+	container: {
+		center: true,
+		padding: "1rem",
+	},
   	extend: {
+		fontFamily: {
+			'inter': ['Inter', 'sans-serif'],
+		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
@@ -24,7 +31,7 @@ export default {
   				foreground: 'hsl(var(--popover-foreground))'
   			},
   			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
+  				DEFAULT: '#191970',
   				foreground: 'hsl(var(--primary-foreground))'
   			},
   			secondary: {
