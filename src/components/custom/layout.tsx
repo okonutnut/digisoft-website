@@ -1,6 +1,8 @@
 import { cn } from "@/lib/utils";
 import NavBar from "./navbar";
 import Footer from "./footer";
+import AppSidebar from "./sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 
 interface PageLayoutProps {
   children: React.ReactNode;
@@ -16,11 +18,24 @@ export default function PageLayout({
 }: PageLayoutProps) {
   return (
     <>
-      <main className={cn(className, "2xl: container mx-auto")}>
-        {hasNavbar && <NavBar />}
-        {children}
-      </main>
-      <Footer />
+      {hasSidebar && (
+        <SidebarProvider>
+          <AppSidebar />
+          <main className={cn(className, "w-screen mx-auto")}>
+            {children}
+            <Footer />
+          </main>
+        </SidebarProvider>
+      )}
+      {hasNavbar && (
+        <>
+          <main className={cn(className, "2xl: container mx-auto")}>
+            <NavBar />
+            {children}
+          </main>
+          <Footer />
+        </>
+      )}
     </>
   );
 }

@@ -1,5 +1,6 @@
 import PageLayout from "@/components/custom/layout";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
   return (
@@ -9,13 +10,15 @@ export default function HomePage() {
           Student Information &amp; Accounting System (SIAS)
         </h1>
         <span className="uppercase text-4xl font-bold text-center mb-10">
-          The most <span className="text-indigo-50">advance</span>, most
-          <span className="text-indigo-50"> complete</span> <br /> &amp;
-          <span className="text-indigo-50"> fully integrated</span>
+          The most <span className="text-[#f1f1f1]">advance</span>, most
+          <span className="text-[#f1f1f1]"> complete</span> <br /> &amp;
+          <span className="text-[#f1f1f1]"> fully integrated</span>
           <br />
           school system in the philippines
         </span>
-        <Button className="px-10 uppercase">See more</Button>
+        <Link to={"/product/sias"}>
+          <Button className="px-10 uppercase">See more</Button>
+        </Link>
       </section>
     </PageLayout>
   );
