@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -10,28 +10,26 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import UseExcelData from "@/hooks/read-products";
 
 export default function NavBar() {
+  const dbProducts = UseExcelData();
+  const productArray = useMemo(() => {
+    return dbProducts.map((prod) => {
+      const item = prod.sheets;
+      return {
+        title: `${item?.Info[0].Title} (${item?.Info[0].Code})`,
+        description: item?.Info[0].Short,
+        href: `/products/${item?.Info[0].Code}`,
+      };
+    });
+  }, [dbProducts]);
+  console.log(productArray);
+
   const menuItems = [
     {
       title: "Products",
-      items: [
-        {
-          title: "Product 1",
-          description: "Product 1 description",
-          href: "/product-1",
-        },
-        {
-          title: "Product 2",
-          description: "Product 2 description",
-          href: "/product-2",
-        },
-        {
-          title: "Product 3",
-          description: "Product 3 description",
-          href: "/product-3",
-        },
-      ],
+      items: productArray,
     },
     {
       title: "Showcase",
@@ -53,17 +51,15 @@ export default function NavBar() {
         <NavigationMenu>
           <NavigationMenuList>
             {menuItems.map((item) => (
-              <NavigationMenuItem>
-                <NavigationMenuTrigger
-                  key={item.title}
-                  className="bg-transparent hover:bg-transparent active:bg-transparent focus:bg-transparent"
-                >
+              <NavigationMenuItem key={item.title}>
+                <NavigationMenuTrigger className="bg-transparent hover:bg-transparent active:bg-transparent focus:bg-transparent">
                   {item.title}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] 2xl:w-[500px]">
                     {item.items.map((component) => (
                       <ListItem
+                        className="text-primary col-span-full"
                         key={component.title}
                         title={component.title}
                         href={component.href}
@@ -76,16 +72,15 @@ export default function NavBar() {
               </NavigationMenuItem>
             ))}
             <NavigationMenuItem>
-              <Link to={"/brochure"}>
-                <NavigationMenuLink
-                  className={cn(
-                    navigationMenuTriggerStyle(),
-                    "bg-transparent hover:bg-transparent active:bg-transparent focus:bg-transparent"
-                  )}
-                >
-                  Brochure
-                </NavigationMenuLink>
-              </Link>
+              <NavigationMenuLink
+                href="/brochure"
+                className={cn(
+                  navigationMenuTriggerStyle(),
+                  "bg-transparent hover:bg-transparent active:bg-transparent focus:bg-transparent"
+                )}
+              >
+                Brochure
+              </NavigationMenuLink>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>

@@ -21,7 +21,7 @@ export default function UseExcelData() {
         if (!files || files.length === 0) return;
 
         const parsedFiles: ParsedFile[] = await Promise.all(
-          files.map(async (fileName) => {
+          files.map(async (fileName: string) => {
             const filePath = `/products/${fileName}`;
             const fileResponse = await fetch(filePath);
             const arrayBuffer = await fileResponse.arrayBuffer();
@@ -48,7 +48,7 @@ export default function UseExcelData() {
     fetchAndParseFiles();
   }, []);
 
-  return filesData; // ✅ Returns an array with one object per Excel file
+  return filesData;
 }
 
 export function GetExcelData(code: string) {

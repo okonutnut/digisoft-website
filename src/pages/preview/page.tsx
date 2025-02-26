@@ -10,11 +10,11 @@ import {
 import { Check } from "lucide-react";
 import ContentCard from "@/components/custom/content/content-card";
 import ContentHeader from "@/components/custom/content/content-header";
-import DownloadSelect from "./components/download-select";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { GetExcelData } from "@/hooks/read-products";
 import TextArea from "@/components/custom/textarea";
+import { DownloadVersion } from "./components/download-combobox";
 
 export default function ProductPreview() {
   const { id } = useParams();
@@ -26,8 +26,6 @@ export default function ProductPreview() {
       setData(obj);
     }
   }, [id, obj]);
-
-  console.log(data);
 
   return (
     <PageLayout className="bg-white px-6" hasSidebar>
@@ -73,8 +71,7 @@ export default function ProductPreview() {
             <p className="font-semibold">
               Get <span className="text-primary">{id?.toUpperCase()}</span>
             </p>
-            <DownloadSelect
-              className="w-[300px]"
+            <DownloadVersion
               options={data?.Download.map((item: any) => ({
                 value: item.Link,
                 label: item.Version,
