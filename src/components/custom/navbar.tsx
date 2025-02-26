@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -6,24 +6,13 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import UseExcelData from "@/hooks/read-products";
+import { GetAllProducts } from "@/hooks/read-products";
 
 export default function NavBar() {
-  const dbProducts = UseExcelData();
-  const productArray = useMemo(() => {
-    return dbProducts.map((prod) => {
-      const item = prod.sheets;
-      return {
-        title: `${item?.Info[0].Title} (${item?.Info[0].Code})`,
-        description: item?.Info[0].Short,
-        href: `/products/${item?.Info[0].Code}`,
-      };
-    });
-  }, [dbProducts]);
+  const productArray = GetAllProducts();
   console.log(productArray);
 
   const menuItems = [
@@ -71,7 +60,7 @@ export default function NavBar() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
             ))}
-            <NavigationMenuItem>
+            {/* <NavigationMenuItem>
               <NavigationMenuLink
                 href="/brochure"
                 className={cn(
@@ -81,7 +70,7 @@ export default function NavBar() {
               >
                 Brochure
               </NavigationMenuLink>
-            </NavigationMenuItem>
+            </NavigationMenuItem> */}
           </NavigationMenuList>
         </NavigationMenu>
       </div>

@@ -27,6 +27,8 @@ export default function ProductPreview() {
     }
   }, [id, obj]);
 
+  console.log(data);
+
   return (
     <PageLayout className="bg-white px-6" hasSidebar>
       {/* Header */}
@@ -67,11 +69,12 @@ export default function ProductPreview() {
 
         {/* DOWNLOADS */}
         <ContentCard title="DOWNLOAD">
-          <div className="flex justify-start items-center gap-3">
+          <div className="flex items-center gap-3">
             <p className="font-semibold">
               Get <span className="text-primary">{id?.toUpperCase()}</span>
             </p>
             <DownloadVersion
+              className="w-[300px]"
               options={data?.Download.map((item: any) => ({
                 value: item.Link,
                 label: item.Version,

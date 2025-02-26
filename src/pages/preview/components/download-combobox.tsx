@@ -19,9 +19,10 @@ import {
 
 interface DownloadVersionProps {
   options?: { value: string; label: string }[];
+  className?: string;
 }
 
-export function DownloadVersion({ options }: DownloadVersionProps) {
+export function DownloadVersion({ options, className }: DownloadVersionProps) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
 
@@ -33,7 +34,7 @@ export function DownloadVersion({ options }: DownloadVersionProps) {
             variant="outline"
             role="combobox"
             aria-expanded={open}
-            className="w-[300px] justify-between"
+            className={cn("w-[200px] justify-between", className)}
           >
             {value
               ? options?.find((item) => item.value === value)?.label
@@ -41,7 +42,7 @@ export function DownloadVersion({ options }: DownloadVersionProps) {
             <ChevronsUpDown className="opacity-50" />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-[200px] p-0">
+        <PopoverContent className={cn("w-[200px] p-0", className)}>
           <Command>
             <CommandInput placeholder="Search versions..." className="h-9" />
             <CommandList>
@@ -72,7 +73,7 @@ export function DownloadVersion({ options }: DownloadVersionProps) {
       </Popover>
       {value && (
         <Link to={`/${value}`} target="_blank">
-          <Button>Download</Button>
+          <Button className="w-[160px]">Download</Button>
         </Link>
       )}
     </>

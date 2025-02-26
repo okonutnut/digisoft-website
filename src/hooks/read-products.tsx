@@ -58,3 +58,16 @@ export function GetExcelData(code: string) {
   );
   return data?.sheets;
 }
+
+export function GetAllProducts() {
+  const dbProducts = UseExcelData();
+  return dbProducts.map((prod) => {
+    const item = prod.sheets;
+    return {
+      title: `${item?.Info[0].Title} (${item?.Info[0].Code})`,
+      description: item?.Info[0].Short,
+      href: `/products/${item?.Info[0].Code}`,
+      faq: `${item?.FAQ[0].FAQ}`,
+    };
+  });
+}
