@@ -7,7 +7,7 @@ body, html {
 }
 
 body {
-  background-image: url("./assets/gradient_blur.png");
+  background-image: url("/gradient_blur.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;

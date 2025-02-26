@@ -16,7 +16,7 @@ export default function HomePage() {
           <br />
           school system in the philippines
         </span>
-        <Link to={"/product/sias"}>
+        <Link to={"/products/sias"}>
           <Button className="px-10 uppercase">See more</Button>
         </Link>
       </section>

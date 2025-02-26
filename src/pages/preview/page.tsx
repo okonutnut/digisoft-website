@@ -8,145 +8,91 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Check } from "lucide-react";
+import ContentCard from "@/components/custom/content/content-card";
+import ContentHeader from "@/components/custom/content/content-header";
+import DownloadSelect from "./components/download-select";
+import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
+import { GetExcelData } from "@/hooks/read-products";
 
 export default function ProductPreview() {
   const { id } = useParams();
+  const [data, setData] = useState<any>();
+
+  const obj = GetExcelData(id as string);
+  useEffect(() => {
+    if (obj) {
+      setData(obj);
+    }
+  }, [id, obj]);
+
+  console.log(data);
+
   return (
-    <PageLayout className="bg-white" hasSidebar>
-      {/* HEADER */}
-      <section className="p-4 mt-8" id="header">
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="#">Product</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbLink href={`/product/${id}`}>
-                {id?.toUpperCase()}
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-      </section>
+    <PageLayout className="bg-white px-6" hasSidebar>
+      {/* Header */}
+      <Breadcrumb className="my-8">
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="#">Product</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink href={`/product/${id}`}>
+              {id?.toUpperCase()}
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
 
-      <section className="p-4 flex flex-col gap-5" id="overview">
+      <section className="my-2 flex flex-col gap-5">
         {/* TITLE */}
-        <div>
-          <h1 className="text-4xl my-5 font-bold text-primary">
-            Student Information &amp; Accounting System (SIAS)
-          </h1>
-          <p className="text-md text-gray-600">
-            SIAS is a web-based application that allows students to view their
-            academic records, pay their tuition fees, and view their grades.
-          </p>
-        </div>
-
+        <ContentHeader
+          title={`${data?.Info[0].Title} (${data?.Info[0].Code})`}
+          subtitle={data?.Info[0].Description}
+        />
         {/* FAQ */}
-        <div>
-          <h2 className="text-lg font-bold text-primary">FAQ</h2>
+        <ContentCard title="FAQ">
           <ul className="text-slate-900">
-            <li>
-              <span className="flex gap-2">
-                <Check />
-                <strong>
-                  The MOST ADVANCED, MOST COMPLETE and FULLY INTEGRATED School
-                  Software in the Philippines!
-                </strong>
-              </span>
-            </li>
-            <li>
-              <span className="flex gap-2">
-                <Check />
-                <strong>
-                  The ONLY school software with INTEGRATED Learning Management
-                  System (LMS) in the Philippines.
-                </strong>
-              </span>
-            </li>
-            <li>
-              <span className="flex gap-2">
-                <Check />
-                <strong>
-                  The ONLY school software that is ACTIVELY MAINTAINED,
-                  DOWNLOADABLE and UPGRADEABLE-BY-DESIGN in the Philippines.
-                </strong>
-              </span>
-            </li>
-            <li>
-              <span className="flex gap-2">
-                <Check />
-                <strong>
-                  The ONLY school software which is 100% Desktop and MOBILE
-                  friendly (All User Interfaces: Admin, Trans, Tools & Reports)
-                </strong>
-              </span>
-            </li>
-            <li>
-              <span className="flex gap-2">
-                <Check />
-                <strong>
-                  The NO. 1 school software implemented at least 100 times in
-                  private and government colleges & universities!
-                </strong>
-              </span>
-            </li>
+            {data?.FAQ.map((item: any, index: number) => (
+              <li key={index}>
+                <span className="flex gap-2">
+                  <Check />
+                  <strong>{item.Faq}</strong>
+                </span>
+              </li>
+            ))}
           </ul>
-        </div>
-      </section>
+        </ContentCard>
 
-      {/* DOWNLOAD */}
-      <section className="p-4 flex flex-col gap-5" id="download">
-        <div>
-          <h2 className="text-lg font-bold text-primary">DOWNLOAD</h2>
-          <ul className="text-slate-900">
-            <li>
-              <span className="flex gap-2">
-                <Check />
-                <strong>
-                  The MOST ADVANCED, MOST COMPLETE and FULLY INTEGRATED School
-                  Software in the Philippines!
-                </strong>
-              </span>
-            </li>
-            <li>
-              <span className="flex gap-2">
-                <Check />
-                <strong>
-                  The ONLY school software with INTEGRATED Learning Management
-                  System (LMS) in the Philippines.
-                </strong>
-              </span>
-            </li>
-            <li>
-              <span className="flex gap-2">
-                <Check />
-                <strong>
-                  The ONLY school software that is ACTIVELY MAINTAINED,
-                  DOWNLOADABLE and UPGRADEABLE-BY-DESIGN in the Philippines.
-                </strong>
-              </span>
-            </li>
-            <li>
-              <span className="flex gap-2">
-                <Check />
-                <strong>
-                  The ONLY school software which is 100% Desktop and MOBILE
-                  friendly (All User Interfaces: Admin, Trans, Tools & Reports)
-                </strong>
-              </span>
-            </li>
-            <li>
-              <span className="flex gap-2">
-                <Check />
-                <strong>
-                  The NO. 1 school software implemented at least 100 times in
-                  private and government colleges & universities!
-                </strong>
-              </span>
-            </li>
-          </ul>
-        </div>
+        <ContentCard title="DOWNLOAD">
+          <div className="flex justify-start items-center gap-3">
+            <p>Get {id?.toUpperCase()}</p>
+            <DownloadSelect
+              className="w-[300px]"
+              options={data?.Downloads.map((item: any) => ({
+                value: item.Link,
+                label: item.Version,
+              }))}
+            />
+          </div>
+        </ContentCard>
+
+        <ContentCard title="RELEASE NOTES">
+          <div className="flex justify-start items-center gap-3">
+            <p>Get {id?.toUpperCase()}</p>
+            <DownloadSelect className="w-[300px]" />
+            <Button>Download</Button>
+          </div>
+        </ContentCard>
+
+        <ContentCard title="BROCHURES">
+          <div className="flex justify-start items-center gap-3">
+            <p>Get {id?.toUpperCase()}</p>
+            <DownloadSelect className="w-[300px]" />
+            <Button>Download</Button>
+          </div>
+        </ContentCard>
       </section>
     </PageLayout>
   );
