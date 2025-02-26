@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import PageLayout from "@/components/custom/layout";
 import {
   Breadcrumb,
@@ -14,6 +14,7 @@ import DownloadSelect from "./components/download-select";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { GetExcelData } from "@/hooks/read-products";
+import TextArea from "@/components/custom/textarea";
 
 export default function ProductPreview() {
   const { id } = useParams();
@@ -51,26 +52,30 @@ export default function ProductPreview() {
           title={`${data?.Info[0].Title} (${data?.Info[0].Code})`}
           subtitle={data?.Info[0].Description}
         />
+
         {/* FAQ */}
-        <ContentCard title="FAQ">
+        <ContentCard title="">
           <ul className="text-slate-900">
             {data?.FAQ.map((item: any, index: number) => (
               <li key={index}>
                 <span className="flex gap-2">
                   <Check />
-                  <strong>{item.Faq}</strong>
+                  <strong>{item.FAQ}</strong>
                 </span>
               </li>
             ))}
           </ul>
         </ContentCard>
 
+        {/* DOWNLOADS */}
         <ContentCard title="DOWNLOAD">
           <div className="flex justify-start items-center gap-3">
-            <p>Get {id?.toUpperCase()}</p>
+            <p className="font-semibold">
+              Get <span className="text-primary">{id?.toUpperCase()}</span>
+            </p>
             <DownloadSelect
               className="w-[300px]"
-              options={data?.Downloads.map((item: any) => ({
+              options={data?.Download.map((item: any) => ({
                 value: item.Link,
                 label: item.Version,
               }))}
@@ -78,20 +83,22 @@ export default function ProductPreview() {
           </div>
         </ContentCard>
 
+        {/* RELEASE NOTES */}
         <ContentCard title="RELEASE NOTES">
-          <div className="flex justify-start items-center gap-3">
-            <p>Get {id?.toUpperCase()}</p>
-            <DownloadSelect className="w-[300px]" />
-            <Button>Download</Button>
-          </div>
+          <TextArea value={data?.ReleaseNote[0].Notes} />
         </ContentCard>
 
+        {/* BROCHURES */}
         <ContentCard title="BROCHURES">
-          <div className="flex justify-start items-center gap-3">
-            <p>Get {id?.toUpperCase()}</p>
-            <DownloadSelect className="w-[300px]" />
-            <Button>Download</Button>
-          </div>
+          <ul className="flex justify-start items-center gap-3">
+            {data?.Brochure.map((item: any, index: number) => (
+              <li key={index}>
+                <Link to={`${item?.Link}`}>
+                  <Button variant={"link"}>{item?.Title}</Button>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </ContentCard>
       </section>
     </PageLayout>
