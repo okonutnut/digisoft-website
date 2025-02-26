@@ -13,7 +13,10 @@ import {
 import { Separator } from "../ui/separator";
 import { Link } from "react-router-dom";
 
-export default function AppSidebar() {
+interface AppSidebarProps {
+  productTitle?: string;
+}
+export default function AppSidebar({ productTitle }: AppSidebarProps) {
   const menuItems = [
     {
       title: "Overview",
@@ -42,7 +45,7 @@ export default function AppSidebar() {
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel className="text-md font-semibold text-slate-900">
-            SIAS-LMS
+            {productTitle?.toUpperCase()}
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>

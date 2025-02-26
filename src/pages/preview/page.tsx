@@ -30,7 +30,11 @@ export default function ProductPreview() {
   console.log(data);
 
   return (
-    <PageLayout className="bg-white px-6" hasSidebar>
+    <PageLayout
+      className="bg-white px-6"
+      hasSidebar
+      productTitle={id?.toUpperCase()}
+    >
       {/* Header */}
       <Breadcrumb className="my-8">
         <BreadcrumbList>

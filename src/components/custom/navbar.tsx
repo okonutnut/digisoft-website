@@ -34,7 +34,7 @@ export default function NavBar() {
   return (
     <nav className="w-full text-slate-900 bg-white/30 backdrop-blur-sm py-6 sticky top-0 z-50">
       <div className="px-2 mx-auto flex justify-between items-center">
-        <Link to="/" className="text-2xl font-semibold text-slate-900">
+        <Link to="/" className="text-2xl font-bold text-slate-900">
           DIGITAL SOFTWARE
         </Link>
         <NavigationMenu>

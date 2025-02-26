@@ -7,12 +7,14 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 interface PageLayoutProps {
   children: React.ReactNode;
   className?: string;
+  productTitle?: string;
   hasNavbar?: boolean;
   hasSidebar?: boolean;
 }
 export default function PageLayout({
   children,
   className,
+  productTitle,
   hasNavbar,
   hasSidebar,
 }: PageLayoutProps) {
@@ -20,7 +22,7 @@ export default function PageLayout({
     <>
       {hasSidebar && (
         <SidebarProvider>
-          <AppSidebar />
+          <AppSidebar productTitle={productTitle} />
           <main className={cn(className, "w-screen mx-auto")}>
             {children}
             <Footer />
