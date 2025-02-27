@@ -4,7 +4,7 @@ import ProductPreview from "./pages/preview/page";
 
 export default function App() {
   return (
-    <BrowserRouter basename="/digisoft">
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/home" element={<HomePage />} />
