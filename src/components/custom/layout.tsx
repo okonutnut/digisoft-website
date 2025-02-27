@@ -11,6 +11,7 @@ interface PageLayoutProps {
   hasSidebar?: boolean;
   productTitle?: string;
   pageName?: string;
+  menuItems?: { title: string; id: string }[];
 }
 export default function PageLayout({
   children,
@@ -19,12 +20,17 @@ export default function PageLayout({
   hasSidebar,
   productTitle,
   pageName,
+  menuItems,
 }: PageLayoutProps) {
   return (
     <>
       {hasSidebar && (
         <SidebarProvider>
-          <AppSidebar productTitle={productTitle} pageName={pageName} />
+          <AppSidebar
+            productTitle={productTitle}
+            pageName={pageName}
+            menuItems={menuItems}
+          />
           <main className={cn(className, "w-screen mx-auto")}>
             {children}
             <Footer />

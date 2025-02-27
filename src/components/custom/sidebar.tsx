@@ -23,6 +23,12 @@ export default function AppSidebar({
   pageName,
   menuItems,
 }: AppSidebarProps) {
+  const scrollIntoElement = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <Sidebar>
       <SidebarHeader>
@@ -37,7 +43,7 @@ export default function AppSidebar({
       <SidebarContent>
         <SidebarGroup>
           {productTitle && (
-            <SidebarGroupLabel className="text-primary text-sm uppercase cursor-default">
+            <SidebarGroupLabel className="text-primary text-md uppercase cursor-default">
               {productTitle}
             </SidebarGroupLabel>
           )}
@@ -45,7 +51,9 @@ export default function AppSidebar({
             <SidebarMenu>
               {menuItems?.map((item, index) => (
                 <SidebarMenuItem key={index}>
-                  <SidebarMenuButton>{item.title}</SidebarMenuButton>
+                  <SidebarMenuButton onClick={() => scrollIntoElement(item.id)}>
+                    {item.title}
+                  </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>

@@ -28,16 +28,23 @@ export default function ProductPreview() {
       hasSidebar
       productTitle={id?.toUpperCase()}
       pageName="Products"
+      menuItems={[
+        { title: "Overview", id: "top" },
+        { title: "Download", id: "download" },
+        { title: "Release Notes", id: "release" },
+        { title: "Brochure", id: "brochure" },
+      ]}
     >
       <section className="my-8 flex flex-col gap-5">
         {/* TITLE */}
         <ContentHeader
           title={`${data?.Info[0].Title} (${data?.Info[0].Code})`}
           subtitle={data?.Info[0].Description}
+          id="top"
         />
 
         {/* FAQ */}
-        <ContentCard title="">
+        <ContentCard title="" id="faq">
           <ul className="text-slate-900">
             {data?.FAQ.map((item: any, index: number) => (
               <li key={index}>
@@ -51,7 +58,7 @@ export default function ProductPreview() {
         </ContentCard>
 
         {/* DOWNLOADS */}
-        <ContentCard title="DOWNLOAD">
+        <ContentCard title="DOWNLOAD" id="download">
           <div className="flex items-center gap-3">
             <p className="font-semibold">
               Get <span className="text-primary">{id?.toUpperCase()}</span>
@@ -67,12 +74,12 @@ export default function ProductPreview() {
         </ContentCard>
 
         {/* RELEASE NOTES */}
-        <ContentCard title="RELEASE NOTES">
+        <ContentCard title="RELEASE NOTES" id="release">
           <TextArea value={data?.ReleaseNote[0].Notes} />
         </ContentCard>
 
         {/* BROCHURES */}
-        <ContentCard title="BROCHURES">
+        <ContentCard title="BROCHURES" id="brochure">
           <ul className="flex justify-start items-center gap-3">
             {data?.Brochure.map((item: any, index: number) => (
               <li key={index}>
