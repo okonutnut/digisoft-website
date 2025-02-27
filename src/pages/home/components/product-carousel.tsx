@@ -13,7 +13,7 @@ export default function ProductCarousel() {
   const products = GetAllProducts();
   return (
     <>
-      <Carousel plugins={[plugin.current]}>
+      <Carousel plugins={[plugin.current]} className="h-screen">
         <CarouselContent>
           {products.map((product, index: number) => (
             <CarouselItem key={index}>

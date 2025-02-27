@@ -66,7 +66,7 @@ export function GetAllProducts() {
     return {
       title: `${item?.Info[0].Title} (${item?.Info[0].Code})`,
       description: item?.Info[0].Short,
-      href: `/products/${item?.Info[0].Code}`,
+      href: `/digisoft/products/${item?.Info[0].Code}`,
       faq: `${item?.FAQ[0].FAQ}`,
     };
   });
