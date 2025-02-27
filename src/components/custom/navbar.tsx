@@ -6,10 +6,12 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { GetAllProducts } from "@/hooks/read-products";
+import { GetAllProducts } from "@/hooks/read-excel";
+import HamburgerMenu from "./hamburger-menu";
 
 export default function NavBar() {
   const productArray = GetAllProducts();
@@ -20,24 +22,17 @@ export default function NavBar() {
       title: "Products",
       items: productArray,
     },
-    {
-      title: "Showcase",
-      items: [
-        {
-          title: "List of Clients",
-          description: "List of clients",
-          href: "/product-1",
-        },
-      ],
-    },
   ];
   return (
-    <nav className="w-full text-slate-900 bg-white/30 backdrop-blur-sm py-6 sticky top-0 z-50">
+    <nav className="w-full text-slate-900 bg-white/30 backdrop-blur-sm 2xl:py-6 xs:py-3 sticky top-0 z-50">
       <div className="px-2 mx-auto flex justify-between items-center">
-        <Link to="/" className="text-2xl font-bold text-slate-900">
+        <Link
+          to="/"
+          className="xl:text-2xl xs:text-xl font-bold text-slate-900"
+        >
           DIGITAL SOFTWARE
         </Link>
-        <NavigationMenu>
+        <NavigationMenu className="hidden lg:block xl:block 2xl:block">
           <NavigationMenuList>
             {menuItems.map((item) => (
               <NavigationMenuItem key={item.title}>
@@ -60,19 +55,20 @@ export default function NavBar() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
             ))}
-            {/* <NavigationMenuItem>
+            <NavigationMenuItem>
               <NavigationMenuLink
-                href="/brochure"
+                href="/list-of-clients"
                 className={cn(
                   navigationMenuTriggerStyle(),
                   "bg-transparent hover:bg-transparent active:bg-transparent focus:bg-transparent"
                 )}
               >
-                Brochure
+                List of Clients
               </NavigationMenuLink>
-            </NavigationMenuItem> */}
+            </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
+        <HamburgerMenu />
       </div>
     </nav>
   );

@@ -1,18 +1,11 @@
 import { Link, useParams } from "react-router-dom";
 import PageLayout from "@/components/custom/layout";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
 import { Check } from "lucide-react";
 import ContentCard from "@/components/custom/content/content-card";
 import ContentHeader from "@/components/custom/content/content-header";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
-import { GetExcelData } from "@/hooks/read-products";
+import { GetExcelData } from "@/hooks/read-excel";
 import TextArea from "@/components/custom/textarea";
 import { DownloadVersion } from "./components/download-combobox";
 
@@ -34,23 +27,9 @@ export default function ProductPreview() {
       className="bg-white px-6"
       hasSidebar
       productTitle={id?.toUpperCase()}
+      pageName="Products"
     >
-      {/* Header */}
-      <Breadcrumb className="my-8">
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink href="#">Product</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink href={`/product/${id}`}>
-              {id?.toUpperCase()}
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
-
-      <section className="my-2 flex flex-col gap-5">
+      <section className="my-8 flex flex-col gap-5">
         {/* TITLE */}
         <ContentHeader
           title={`${data?.Info[0].Title} (${data?.Info[0].Code})`}

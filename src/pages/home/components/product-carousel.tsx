@@ -4,7 +4,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import ProductCard from "./product-card";
-import { GetAllProducts } from "@/hooks/read-products";
+import { GetAllProducts } from "@/hooks/read-excel";
 import { useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
 

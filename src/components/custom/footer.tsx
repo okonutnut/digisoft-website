@@ -103,8 +103,8 @@ export default function Footer() {
     <footer className="w-full h-[50vh] bg-white flex flex-col justify-start items-center">
       <section className="2xl: container w-full">
         {/* FOOTER */}
-        <div className="h-full w-full grid grid-cols-4 gap-4 p-4">
-          <div>
+        <div className="h-full w-full flex justify-between gap-4 p-4">
+          <div className="block xs:hidden md:block lg:block xl:block 2xl:block">
             <label className="uppercase font-bold tracking-widest">
               product
             </label>
@@ -116,7 +116,7 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-          <div>
+          <div className="block xs:hidden md:block lg:block xl:block 2xl:block">
             <label className="uppercase font-bold tracking-widest">
               LIST OF CLIENT
             </label>
@@ -128,7 +128,7 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-          <div className="col-span-2">
+          <div className="col-span-full">
             <label className="uppercase font-bold tracking-widest">
               FOR MORE INFORMATION CONTACT
             </label>

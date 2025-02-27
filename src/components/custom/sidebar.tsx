@@ -15,22 +15,14 @@ import { Link } from "react-router-dom";
 
 interface AppSidebarProps {
   productTitle?: string;
+  pageName?: string;
+  menuItems?: { title: string; id: string }[];
 }
-export default function AppSidebar({ productTitle }: AppSidebarProps) {
-  const menuItems = [
-    {
-      title: "Overview",
-    },
-    {
-      title: "Downloads",
-    },
-    {
-      title: "Release Notes",
-    },
-    {
-      title: "Brochures",
-    },
-  ];
+export default function AppSidebar({
+  productTitle,
+  pageName,
+  menuItems,
+}: AppSidebarProps) {
   return (
     <Sidebar>
       <SidebarHeader>
@@ -39,17 +31,19 @@ export default function AppSidebar({ productTitle }: AppSidebarProps) {
             Digital Software
           </Link>
           <Separator orientation="vertical" />
-          <h3 className="uppercase text-sm text-slate-900">Product</h3>
+          <h3 className="uppercase text-sm text-slate-900">{pageName}</h3>
         </div>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel className="text-md font-semibold text-slate-900">
-            {productTitle?.toUpperCase()}
-          </SidebarGroupLabel>
+          {productTitle && (
+            <SidebarGroupLabel className="text-primary text-sm uppercase cursor-default">
+              {productTitle}
+            </SidebarGroupLabel>
+          )}
           <SidebarGroupContent>
             <SidebarMenu>
-              {menuItems.map((item, index) => (
+              {menuItems?.map((item, index) => (
                 <SidebarMenuItem key={index}>
                   <SidebarMenuButton>{item.title}</SidebarMenuButton>
                 </SidebarMenuItem>
