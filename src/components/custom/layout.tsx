@@ -1,7 +1,8 @@
+import React from "react";
 import { cn } from "@/lib/utils";
-import NavBar from "./navbar";
-import Footer from "./footer";
-import AppSidebar from "./sidebar";
+const NavBar = React.lazy(() => import("./navbar"));
+const Footer = React.lazy(() => import("./footer"));
+const AppSidebar = React.lazy(() => import("./sidebar"));
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { Separator } from "../ui/separator";
 
