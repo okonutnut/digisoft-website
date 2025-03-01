@@ -9,42 +9,44 @@ export interface ParsedFile {
 }
 
 export default function UseProductsData() {
-  const [fileData, setFileData] = useState<ParsedFile | null>(null);
+  const [fileData, setFileData] = useState<ParsedFile[]>([]);
 
   useEffect(() => {
-    async function fetchAndParseFile() {
+    async function fetchAndParseFiles() {
       try {
-        // Fetch file list from JSON
         const res = await fetch("/products/files.json");
         const { files } = await res.json();
 
         if (!files || files.length === 0) return;
 
-        // Only process the first file
-        const fileName = files[0];
-        const filePath = `/products/${fileName}`;
-        const fileResponse = await fetch(filePath);
-        const arrayBuffer = await fileResponse.arrayBuffer();
-        const workbook = XLSX.read(arrayBuffer, { type: "array" });
+        const parsedFiles: ParsedFile[] = await Promise.all(
+          files.map(async (fileName: string) => {
+            const filePath = `/products/${fileName}`;
+            const fileResponse = await fetch(filePath);
+            const arrayBuffer = await fileResponse.arrayBuffer();
+            const workbook = XLSX.read(arrayBuffer, { type: "array" });
 
-        // Parse all sheets in the file
-        const sheetsData: ParsedFile["sheets"] = {};
-        workbook.SheetNames.forEach((sheetName) => {
-          sheetsData[sheetName] = XLSX.utils.sheet_to_json(
-            workbook.Sheets[sheetName]
-          );
-        });
+            const sheetsData: ParsedFile["sheets"] = {};
+            workbook.SheetNames.forEach((sheetName) => {
+              sheetsData[sheetName] = XLSX.utils.sheet_to_json(
+                workbook.Sheets[sheetName]
+              );
+            });
 
-        setFileData({ fileName, sheets: sheetsData });
+            return { fileName, sheets: sheetsData };
+          })
+        );
+
+        setFileData(parsedFiles);
       } catch (error) {
-        console.error("Error fetching/parsing Excel file:", error);
+        console.error("Error fetching/parsing Excel files:", error);
       }
     }
 
-    fetchAndParseFile();
+    fetchAndParseFiles();
   }, []);
 
-  return fileData ? [fileData] : [];
+  return fileData;
 }
 
 interface UseReadExcelProps {
@@ -104,6 +106,7 @@ export function GetAllProducts() {
     if (!item || !item.Info) return [];
 
     return item.Info.map((info) => ({
+      code: info.Code,
       title: `${info.Title} (${info.Code})`,
       description: info.Description,
       href: `/products/${info.Code}`,

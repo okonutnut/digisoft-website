@@ -15,7 +15,6 @@ import HamburgerMenu from "./hamburger-menu";
 
 export default function NavBar() {
   const productArray = GetAllProducts();
-
   const menuItems = [
     {
       title: "Products",
@@ -25,12 +24,15 @@ export default function NavBar() {
   return (
     <nav className="w-full text-slate-900 bg-white/30 backdrop-blur-sm 2xl:py-6 xs:py-3 sticky top-0 z-50">
       <div className="px-2 mx-auto flex justify-between items-center">
-        <Link
-          to="/"
-          className="xl:text-2xl xs:text-xl font-bold text-slate-900"
-        >
-          DIGITAL SOFTWARE
-        </Link>
+        <span className="flex items-center space-x-1">
+          <HamburgerMenu />
+          <Link
+            to="/"
+            className="xl:text-2xl xs:text-xl font-bold text-slate-900"
+          >
+            DIGITAL SOFTWARE
+          </Link>
+        </span>
         <NavigationMenu className="hidden lg:block xl:block 2xl:block">
           <NavigationMenuList>
             {menuItems.map((item) => (
@@ -67,7 +69,6 @@ export default function NavBar() {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
-        <HamburgerMenu />
       </div>
     </nav>
   );

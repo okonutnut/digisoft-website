@@ -34,7 +34,7 @@ export default function AppSidebar({
       <SidebarHeader>
         <div className="flex justify-between items-center my-3">
           <Link to={"/"} className="text-md uppercase font-bold text-slate-900">
-            Digital Software
+            DIGISOFT PH
           </Link>
           <Separator orientation="vertical" />
           <h3 className="uppercase text-sm text-slate-900">{pageName}</h3>

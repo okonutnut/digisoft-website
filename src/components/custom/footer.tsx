@@ -104,7 +104,7 @@ export default function Footer({ className }: FooterProps) {
     },
   ];
   return (
-    <footer className="w-full h-[50vh] bg-white flex flex-col justify-start items-center">
+    <footer className="w-full bg-white flex flex-col justify-start items-center">
       <section className={cn(className, "w-full")}>
         {/* FOOTER */}
         <div className="h-full w-full flex justify-between gap-4 p-4">

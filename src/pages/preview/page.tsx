@@ -74,11 +74,14 @@ export default function ProductPreview() {
 
         {/* DOWNLOADS */}
         <ContentCard title="DOWNLOAD" id="download">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center justify-start gap-3 flex-wrap">
             {data?.download && data.download.length > 0 ? (
               <>
-                <p className="font-semibold">
-                  Get <span className="text-primary">{id?.toUpperCase()}</span>
+                <p className="font-semibold my-0">
+                  Get{" "}
+                  <span className="text-primary text-sm">
+                    {id?.toUpperCase()}
+                  </span>
                 </p>
                 <DownloadVersion
                   className="w-[500px]"

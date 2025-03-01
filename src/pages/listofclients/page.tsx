@@ -7,6 +7,14 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { GetListOfClients } from "@/hooks/read-excel";
 
 export default function ListOfClients() {
@@ -32,6 +40,17 @@ export default function ListOfClients() {
       menuItems={[{ title: "List of all client", id: "list-of-clients" }]}
     >
       <section className="my-8 flex flex-col gap-5">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">Home</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>List of Clients</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
         {/* TITLE */}
         <ContentHeader
           title="List of Clients"
