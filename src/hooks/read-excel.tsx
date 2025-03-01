@@ -1,4 +1,3 @@
-import { User } from "lucide-react";
 import { useEffect, useState } from "react";
 import * as XLSX from "xlsx";
 
@@ -10,10 +9,10 @@ export interface ParsedFile {
 }
 
 export default function UseProductsData() {
-  const [filesData, setFilesData] = useState<ParsedFile[]>([]);
+  const [fileData, setFileData] = useState<ParsedFile | null>(null);
 
   useEffect(() => {
-    async function fetchAndParseFiles() {
+    async function fetchAndParseFile() {
       try {
         // Fetch file list from JSON
         const res = await fetch("/products/files.json");
@@ -21,35 +20,31 @@ export default function UseProductsData() {
 
         if (!files || files.length === 0) return;
 
-        const parsedFiles: ParsedFile[] = await Promise.all(
-          files.map(async (fileName: string) => {
-            const filePath = `/products/${fileName}`;
-            const fileResponse = await fetch(filePath);
-            const arrayBuffer = await fileResponse.arrayBuffer();
-            const workbook = XLSX.read(arrayBuffer, { type: "array" });
+        // Only process the first file
+        const fileName = files[0];
+        const filePath = `/products/${fileName}`;
+        const fileResponse = await fetch(filePath);
+        const arrayBuffer = await fileResponse.arrayBuffer();
+        const workbook = XLSX.read(arrayBuffer, { type: "array" });
 
-            // Parse all sheets in the file
-            const sheetsData: ParsedFile["sheets"] = {};
-            workbook.SheetNames.forEach((sheetName) => {
-              sheetsData[sheetName] = XLSX.utils.sheet_to_json(
-                workbook.Sheets[sheetName]
-              );
-            });
+        // Parse all sheets in the file
+        const sheetsData: ParsedFile["sheets"] = {};
+        workbook.SheetNames.forEach((sheetName) => {
+          sheetsData[sheetName] = XLSX.utils.sheet_to_json(
+            workbook.Sheets[sheetName]
+          );
+        });
 
-            return { fileName, sheets: sheetsData };
-          })
-        );
-
-        setFilesData(parsedFiles);
+        setFileData({ fileName, sheets: sheetsData });
       } catch (error) {
-        console.error("Error fetching/parsing Excel files:", error);
+        console.error("Error fetching/parsing Excel file:", error);
       }
     }
 
-    fetchAndParseFiles();
+    fetchAndParseFile();
   }, []);
 
-  return filesData;
+  return fileData ? [fileData] : [];
 }
 
 interface UseReadExcelProps {
@@ -103,15 +98,61 @@ export function GetExcelData(code: string) {
 
 export function GetAllProducts() {
   const dbProducts = UseProductsData();
-  return dbProducts.map((prod) => {
+
+  return dbProducts.flatMap((prod) => {
     const item = prod.sheets;
-    return {
-      title: `${item?.Info[0].Title} (${item?.Info[0].Code})`,
-      description: item?.Info[0].Short,
-      href: `/products/${item?.Info[0].Code}`,
-      faq: `${item?.FAQ[0].FAQ}`,
-    };
+    if (!item || !item.Info) return [];
+
+    return item.Info.map((info) => ({
+      title: `${info.Title} (${info.Code})`,
+      description: info.Description,
+      href: `/products/${info.Code}`,
+      faq: (item.FAQ || [])
+        .filter((faq) => faq.Code === info.Code)
+        .slice(0, 1)
+        .map((faq) => faq.FAQ),
+      download:
+        (item.Download || []).find((dl) => dl.Code === info.Code)?.Link || null,
+      brochure:
+        (item.Brochure || []).find((br) => br.Code === info.Code)?.Link || null,
+      short_des: info.Short,
+    }));
   });
+}
+
+export function GetProductDetails(code: string) {
+  const dbProducts = UseProductsData();
+
+  for (const prod of dbProducts) {
+    const item = prod.sheets;
+    if (!item || !item.Info) continue;
+
+    const info = item.Info.find((p) => p.Code === code);
+    if (info) {
+      return {
+        title: `${info.Title} (${info.Code})`,
+        description: info.Description,
+        href: `/products/${info.Code}`,
+        faq: (item.FAQ || [])
+          .filter((faq) => faq.Code === code)
+          .map((faq) => faq.FAQ),
+        download: (item.Download || [])
+          .filter((dl) => dl.Code === code)
+          .map((dl) => ({
+            version: dl.Version,
+            link: dl.Link,
+          })),
+        brochure: (item.Brochure || [])
+          .filter((br) => br.Code === code)
+          .map((br) => ({
+            title: br.Title,
+            link: br.Link,
+          })),
+      };
+    }
+  }
+
+  return null; // Return null if the product is not found
 }
 
 export function GetListOfClients() {

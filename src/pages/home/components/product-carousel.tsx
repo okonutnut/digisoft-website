@@ -11,6 +11,7 @@ import Autoplay from "embla-carousel-autoplay";
 export default function ProductCarousel() {
   const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
   const products = GetAllProducts();
+  console.log(products);
   return (
     <>
       <Carousel plugins={[plugin.current]} className="h-screen" id="element">

@@ -27,8 +27,9 @@ export default function ListOfClients() {
     <PageLayout
       className="bg-white px-6"
       hasSidebar
-      productTitle="List of Clients"
+      productTitle="Menu"
       pageName="Clients"
+      menuItems={[{ title: "List of all client", id: "list-of-clients" }]}
     >
       <section className="my-8 flex flex-col gap-5">
         {/* TITLE */}
@@ -38,7 +39,7 @@ export default function ListOfClients() {
         />
 
         {/* LIST OF CLIENTS */}
-        <ContentCard title="">
+        <ContentCard id="list-of-clients">
           <Accordion type="multiple" className="w-full">
             {Object.entries(regionsMap).map(([region, schools]) => (
               <AccordionItem key={region} value={region}>

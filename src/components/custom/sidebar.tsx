@@ -26,7 +26,7 @@ export default function AppSidebar({
   const scrollIntoElement = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   };
   return (

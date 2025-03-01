@@ -15,7 +15,6 @@ import HamburgerMenu from "./hamburger-menu";
 
 export default function NavBar() {
   const productArray = GetAllProducts();
-  console.log(productArray);
 
   const menuItems = [
     {
@@ -48,7 +47,7 @@ export default function NavBar() {
                         title={component.title}
                         href={component.href}
                       >
-                        {component.description}
+                        {component.short_des}
                       </ListItem>
                     ))}
                   </ul>

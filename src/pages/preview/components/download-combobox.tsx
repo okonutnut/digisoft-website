@@ -48,9 +48,9 @@ export function DownloadVersion({ options, className }: DownloadVersionProps) {
             <CommandList>
               <CommandEmpty>No versions found.</CommandEmpty>
               <CommandGroup>
-                {options?.map((item) => (
+                {options?.map((item, index: number) => (
                   <CommandItem
-                    key={item.value}
+                    key={index}
                     value={item.value}
                     onSelect={(currentValue: string) => {
                       setValue(currentValue === value ? "" : currentValue);

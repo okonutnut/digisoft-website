@@ -3,24 +3,17 @@ import PageLayout from "@/components/custom/layout";
 import { Check } from "lucide-react";
 import ContentCard from "@/components/custom/content/content-card";
 import ContentHeader from "@/components/custom/content/content-header";
-import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
-import { GetExcelData } from "@/hooks/read-excel";
+import { GetProductDetails } from "@/hooks/read-excel";
 import TextArea from "@/components/custom/textarea";
 import { DownloadVersion } from "./components/download-combobox";
+import useReleaseNotes from "@/hooks/useReleaseNotes";
 
 export default function ProductPreview() {
   const { id } = useParams();
-  const [data, setData] = useState<any>();
 
-  const obj = GetExcelData(id as string);
-  useEffect(() => {
-    if (obj) {
-      setData(obj);
-    }
-  }, [id, obj]);
-
-  console.log(data);
+  // Get Product Details & Release Notes
+  const getReleaseNotes = useReleaseNotes(id as string);
+  const data = GetProductDetails(id as string);
 
   return (
     <PageLayout
@@ -32,25 +25,25 @@ export default function ProductPreview() {
         { title: "Overview", id: "top" },
         { title: "Download", id: "download" },
         { title: "Release Notes", id: "release" },
-        { title: "Brochure", id: "brochure" },
+        { title: "Brochures", id: "brochure" },
       ]}
     >
-      <section className="my-8 flex flex-col gap-5">
+      <section className="my-8 flex flex-col gap-5 items-start">
         {/* TITLE */}
         <ContentHeader
-          title={`${data?.Info[0].Title} (${data?.Info[0].Code})`}
-          subtitle={data?.Info[0].Description}
+          title={data?.title}
+          subtitle={data?.description}
           id="top"
         />
 
         {/* FAQ */}
-        <ContentCard title="" id="faq">
+        <ContentCard title="FAQ" id="faq">
           <ul className="text-slate-900">
-            {data?.FAQ.map((item: any, index: number) => (
+            {data?.faq.map((item: string, index: number) => (
               <li key={index}>
                 <span className="flex gap-2">
                   <Check />
-                  <strong>{item.FAQ}</strong>
+                  <strong>{item}</strong>
                 </span>
               </li>
             ))}
@@ -65,29 +58,32 @@ export default function ProductPreview() {
             </p>
             <DownloadVersion
               className="w-[300px]"
-              options={data?.Download.map((item: any) => ({
-                value: item.Link,
-                label: item.Version,
-              }))}
+              options={data?.download.map(
+                (dl: { version: string; link: string }) => {
+                  return { label: dl.version, value: dl.link };
+                }
+              )}
             />
           </div>
         </ContentCard>
 
         {/* RELEASE NOTES */}
-        <ContentCard title="RELEASE NOTES" id="release">
-          <TextArea value={data?.ReleaseNote[0].Notes} />
+        <ContentCard title="RELEASE NOTES" id="release" className="max-w-[50%]">
+          <TextArea value={getReleaseNotes} />
         </ContentCard>
 
         {/* BROCHURES */}
         <ContentCard title="BROCHURES" id="brochure">
           <ul className="flex justify-start items-center gap-3">
-            {data?.Brochure.map((item: any, index: number) => (
-              <li key={index}>
-                <Link to={`${item?.Link}`}>
-                  <Button variant={"link"}>{item?.Title}</Button>
-                </Link>
-              </li>
-            ))}
+            {data?.brochure.map(
+              (item: { title: string; link: string }, index: number) => (
+                <li key={index}>
+                  <Link to={item.link} className="text-sm underline">
+                    {item.title}
+                  </Link>
+                </li>
+              )
+            )}
           </ul>
         </ContentCard>
       </section>
