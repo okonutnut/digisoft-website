@@ -62,7 +62,7 @@ export default function ProductPreview() {
             <ul className="text-slate-900">
               {data?.faq.map((item: string, index: number) => (
                 <li key={index}>
-                  <span className="flex gap-2 xs:text-xs">
+                  <span className="flex gap-2 2xl:text-lg sm:text-xs">
                     <Check />
                     <strong>{item}</strong>
                   </span>
@@ -105,7 +105,7 @@ export default function ProductPreview() {
           className="2xl:max-w-[50%]"
         >
           {getReleaseNotes && getReleaseNotes != "No release notes found." ? (
-            <TextArea value={getReleaseNotes} />
+            <TextArea value={getReleaseNotes} className="xs:text-xs" />
           ) : (
             <p className="italic text-slate-600 text-sm">
               No release notes available.
