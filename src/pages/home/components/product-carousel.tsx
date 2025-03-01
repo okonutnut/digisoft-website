@@ -20,6 +20,7 @@ export default function ProductCarousel() {
               <ProductCard
                 title={product.title}
                 description={product.short_des}
+                link={product.href}
               />
             </CarouselItem>
           ))}

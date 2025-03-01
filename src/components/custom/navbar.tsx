@@ -11,16 +11,19 @@ import {
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { GetAllProducts } from "@/hooks/read-excel";
-import HamburgerMenu from "./hamburger-menu";
+const HamburgerMenu = React.lazy(() => import("./hamburger-menu"));
 
 export default function NavBar() {
   const productArray = GetAllProducts();
-  const menuItems = [
-    {
-      title: "Products",
-      items: productArray,
-    },
-  ];
+  const menuItems = React.useMemo(
+    () => [
+      {
+        title: "Products",
+        items: productArray,
+      },
+    ],
+    [productArray]
+  );
   return (
     <nav className="w-full text-slate-900 bg-white/30 backdrop-blur-sm 2xl:py-6 xs:py-3 sticky top-0 z-50">
       <div className="px-2 mx-auto flex justify-between items-center">

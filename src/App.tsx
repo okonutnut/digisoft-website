@@ -1,7 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import HomePage from "./pages/home/page";
-import ProductPreview from "./pages/preview/page";
-import ListOfClients from "./pages/listofclients/page";
+import { lazy } from "react";
+const HomePage = lazy(() => import("./pages/home/page"));
+const ProductPreview = lazy(() => import("./pages/preview/page"));
+const ListOfClients = lazy(() => import("./pages/listofclients/page"));
 
 export default function App() {
   return (

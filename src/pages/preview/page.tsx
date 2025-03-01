@@ -36,7 +36,7 @@ export default function ProductPreview() {
         { title: "Brochures", id: "brochure" },
       ]}
     >
-      <section className="my-8 flex flex-col gap-5 items-start h-screen">
+      <section className="my-8 flex flex-col gap-5 items-start min-h-screen">
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -62,7 +62,7 @@ export default function ProductPreview() {
             <ul className="text-slate-900">
               {data?.faq.map((item: string, index: number) => (
                 <li key={index}>
-                  <span className="flex gap-2">
+                  <span className="flex gap-2 xs:text-xs">
                     <Check />
                     <strong>{item}</strong>
                   </span>
@@ -99,7 +99,11 @@ export default function ProductPreview() {
         </ContentCard>
 
         {/* RELEASE NOTES */}
-        <ContentCard title="RELEASE NOTES" id="release" className="max-w-[50%]">
+        <ContentCard
+          title="RELEASE NOTES"
+          id="release"
+          className="2xl:max-w-[50%]"
+        >
           {getReleaseNotes && getReleaseNotes != "No release notes found." ? (
             <TextArea value={getReleaseNotes} />
           ) : (

@@ -15,7 +15,11 @@ export default function ContentCard({
 }: ContentCardProps) {
   return (
     <div id={id} className={cn(className, "w-full")}>
-      {title && <h2 className="text-lg font-bold text-primary">{title}</h2>}
+      {title && (
+        <h2 className="2xl:text-lg xs:text-md font-bold text-primary">
+          {title}
+        </h2>
+      )}
       {children}
     </div>
   );

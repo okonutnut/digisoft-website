@@ -34,7 +34,7 @@ export function DownloadVersion({ options, className }: DownloadVersionProps) {
             variant="outline"
             role="combobox"
             aria-expanded={open}
-            className={cn("w-[200px] justify-between", className)}
+            className={cn("max-w-[300px] justify-between text-wrap", className)}
           >
             {value
               ? options?.find((item) => item.value === value)?.label
