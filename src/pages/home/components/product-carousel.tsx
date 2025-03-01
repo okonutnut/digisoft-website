@@ -18,7 +18,10 @@ export default function ProductCarousel() {
         <CarouselContent>
           {products.map((product, index: number) => (
             <CarouselItem key={index}>
-              <ProductCard title={product.title} description={product.faq} />
+              <ProductCard
+                title={product.title}
+                description={product.short_des}
+              />
             </CarouselItem>
           ))}
         </CarouselContent>

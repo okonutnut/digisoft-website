@@ -9,11 +9,23 @@ const useReleaseNotes = (id: string) => {
     const fetchReleaseNotes = async () => {
       try {
         const response = await fetch(`/releasenotes/${id.toLowerCase()}.txt`);
-        if (!response.ok) throw new Error("Failed to fetch release notes");
-        const text = await response.text();
-        setReleaseNotes(text);
+
+        if (!response.ok) {
+          setReleaseNotes("No release notes found.");
+          return;
+        }
+
+        // Ensure response is plain text
+        const contentType = response.headers.get("Content-Type");
+        if (contentType && contentType.includes("text/plain")) {
+          const text = await response.text();
+          setReleaseNotes(text);
+        } else {
+          setReleaseNotes("No release notes found.");
+        }
       } catch (error) {
         console.error(error);
+        setReleaseNotes("Error fetching release notes.");
       }
     };
 

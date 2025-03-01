@@ -1,7 +1,11 @@
+import { cn } from "@/lib/utils";
 import { Facebook, MailIcon, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 
-export default function Footer() {
+interface FooterProps {
+  className?: string;
+}
+export default function Footer({ className }: FooterProps) {
   const products = [
     {
       title: "SIAS Online",
@@ -101,11 +105,11 @@ export default function Footer() {
   ];
   return (
     <footer className="w-full h-[50vh] bg-white flex flex-col justify-start items-center">
-      <section className="2xl: container w-full">
+      <section className={cn(className, "w-full")}>
         {/* FOOTER */}
         <div className="h-full w-full flex justify-between gap-4 p-4">
           <div className="block xs:hidden md:block lg:block xl:block 2xl:block">
-            <label className="uppercase font-bold tracking-widest">
+            <label className="text-slate-900 uppercase font-bold tracking-widest">
               product
             </label>
             <ul>
@@ -117,7 +121,7 @@ export default function Footer() {
             </ul>
           </div>
           <div className="block xs:hidden md:block lg:block xl:block 2xl:block">
-            <label className="uppercase font-bold tracking-widest">
+            <label className="text-slate-900 uppercase font-bold tracking-widest">
               LIST OF CLIENT
             </label>
             <ul>
@@ -129,7 +133,7 @@ export default function Footer() {
             </ul>
           </div>
           <div className="col-span-full">
-            <label className="uppercase font-bold tracking-widest">
+            <label className="text-slate-900 uppercase font-bold tracking-widest">
               FOR MORE INFORMATION CONTACT
             </label>
             <div className="mb-5">

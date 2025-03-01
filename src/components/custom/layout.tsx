@@ -3,6 +3,7 @@ import NavBar from "./navbar";
 import Footer from "./footer";
 import AppSidebar from "./sidebar";
 import { SidebarProvider } from "@/components/ui/sidebar";
+import { Separator } from "../ui/separator";
 
 interface PageLayoutProps {
   children: React.ReactNode;
@@ -33,6 +34,7 @@ export default function PageLayout({
           />
           <main className={cn(className, "w-screen mx-auto")}>
             {children}
+            <Separator />
             <Footer />
           </main>
         </SidebarProvider>
@@ -43,7 +45,8 @@ export default function PageLayout({
             <NavBar />
             {children}
           </main>
-          <Footer />
+          <Separator />
+          <Footer className="2xl:container" />
         </>
       )}
     </>

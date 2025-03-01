@@ -131,7 +131,7 @@ export function GetProductDetails(code: string) {
     if (info) {
       return {
         title: `${info.Title} (${info.Code})`,
-        description: info.Description,
+        description: info.Short,
         href: `/products/${info.Code}`,
         faq: (item.FAQ || [])
           .filter((faq) => faq.Code === code)
