@@ -28,7 +28,7 @@ export default function HamburgerMenu() {
           </Button>
         </SheetTrigger>
         <SheetContent className="py-10" side={"left"}>
-          <Accordion type="single">
+          <Accordion type="single" collapsible>
             <AccordionItem value="item-1" className="border-none">
               <AccordionTrigger className="underline text-sm font-medium">
                 {menuItems.title}
