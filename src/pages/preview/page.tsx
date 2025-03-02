@@ -84,7 +84,7 @@ export default function ProductPreview() {
                   </span>
                 </p>
                 <DownloadVersion
-                  className="w-[500px]"
+                  className="xs:min-w-full 2xl:min-w-[500px] xl:min-w-[400px] lg:min-w-[300px] md:min-w-[200px] sm:min-w-[150px]"
                   options={data?.download.map(
                     (dl: { version: string; link: string }) => {
                       return { label: dl.version, value: dl.link };

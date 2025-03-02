@@ -13,22 +13,6 @@ body {
   background-position: center;
 }
 
-@keyframes easeInFromTop {
-  from {
-      transform: translateY(-100%);
-      opacity: 0;
-  }
-  to {
-      transform: translateY(0);
-      opacity: 1;
-  }
-}
-
-#element {
-  animation: easeInFromTop 0.65s ease-out forwards;
-}
-
-
 .text-primary {
   color: #191970 !important;
 }

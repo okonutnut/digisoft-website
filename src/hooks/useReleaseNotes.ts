@@ -8,7 +8,7 @@ const useReleaseNotes = (id: string) => {
 
     const fetchReleaseNotes = async () => {
       try {
-        const response = await fetch(`/releasenotes/${id.toLowerCase()}.txt`);
+        const response = await fetch(`/downloads/${id.toLowerCase()}-changelog.txt`);
 
         if (!response.ok) {
           setReleaseNotes("No release notes found.");

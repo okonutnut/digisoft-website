@@ -34,7 +34,7 @@ export function DownloadVersion({ options, className }: DownloadVersionProps) {
             variant="outline"
             role="combobox"
             aria-expanded={open}
-            className={cn("max-w-[300px] justify-between text-wrap", className)}
+            className={cn(className, "w-[300px] justify-between text-wrap")}
           >
             {value
               ? options?.find((item) => item.value === value)?.label
@@ -42,7 +42,7 @@ export function DownloadVersion({ options, className }: DownloadVersionProps) {
             <ChevronsUpDown className="opacity-50" />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className={cn("w-[200px] p-0", className)}>
+        <PopoverContent className={cn(className, "w-[300px] p-0")}>
           <Command>
             <CommandInput placeholder="Search versions..." className="h-9" />
             <CommandList>

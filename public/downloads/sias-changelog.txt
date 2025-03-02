@@ -1,3 +1,9 @@
+3.6.3.1 (March 1, 2025)
+	---!!! UPGRADE NOTES !!!--
+	Must delete "c:\sias\cache" folder
+
+	-1  SIAS Online/Term Grades: Show GWA in ROG pdf report (UPHS JONELTA)
+
 3.6.2.25 (February 28, 2024)
 	---!!! UPGRADE NOTES !!!--
 	Must delete "c:\sias\cache" folder
