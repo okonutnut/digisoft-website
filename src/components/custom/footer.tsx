@@ -1,3 +1,4 @@
+import { GetAllProducts } from "@/hooks/read-excel";
 import { cn } from "@/lib/utils";
 import { Facebook, MailIcon, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -6,103 +7,7 @@ interface FooterProps {
   className?: string;
 }
 export default function Footer({ className }: FooterProps) {
-  const products = [
-    {
-      title: "SIAS Online",
-      link: "#",
-    },
-    {
-      title: "CARES Online",
-      link: "#",
-    },
-    {
-      title: "Payroll",
-      link: "#",
-    },
-    {
-      title: "AMS",
-      link: "#",
-    },
-    {
-      title: "POS",
-      link: "#",
-    },
-    {
-      title: "EMS",
-      link: "#",
-    },
-    {
-      title: "SMS",
-      link: "#",
-    },
-    {
-      title: "LIS",
-      link: "#",
-    },
-    {
-      title: "QUEUE",
-      link: "#",
-    },
-    {
-      title: "ASIS",
-      link: "#",
-    },
-  ];
-
-  const listOfClient = [
-    {
-      title: "CAGAYAN",
-      link: "#",
-    },
-    {
-      title: "CORDILLERA",
-      link: "#",
-    },
-    {
-      title: "ISABELA / QUIRINO",
-      link: "#",
-    },
-    {
-      title: "NUEVA VIZCAYA",
-      link: "#",
-    },
-    {
-      title: "CENTRAL LUZON",
-      link: "#",
-    },
-    {
-      title: "ILOCOS REGION",
-      link: "#",
-    },
-    {
-      title: "METRO MANILA",
-      link: "#",
-    },
-    {
-      title: "BICOL",
-      link: "#",
-    },
-    {
-      title: "MINDORO",
-      link: "#",
-    },
-    {
-      title: "NEGROS / ILO-ILO",
-      link: "#",
-    },
-    {
-      title: "SAMAR / LEYTE",
-      link: "#",
-    },
-    {
-      title: "PALAWAN",
-      link: "#",
-    },
-    {
-      title: "MINDANAO",
-      link: "#",
-    },
-  ];
+  const products = GetAllProducts();
   return (
     <footer className="w-full bg-white flex flex-col justify-start items-center">
       <section className={cn(className, "w-full")}>
@@ -110,17 +15,17 @@ export default function Footer({ className }: FooterProps) {
         <div className="h-full w-full flex justify-between gap-4 p-4">
           <div className="block xs:hidden md:block lg:block xl:block 2xl:block">
             <label className="text-slate-900 uppercase font-bold tracking-widest">
-              product
+              products
             </label>
             <ul>
               {products.map((product, index: number) => (
                 <li key={index} className="mb-1">
-                  <a href={product.link}>{product.title}</a>
+                  <a href={product.href}>{product.code}</a>
                 </li>
               ))}
             </ul>
           </div>
-          <div className="block xs:hidden md:block lg:block xl:block 2xl:block">
+          {/* <div className="block xs:hidden md:block lg:block xl:block 2xl:block">
             <label className="text-slate-900 uppercase font-bold tracking-widest">
               LIST OF CLIENT
             </label>
@@ -131,7 +36,7 @@ export default function Footer({ className }: FooterProps) {
                 </li>
               ))}
             </ul>
-          </div>
+          </div> */}
           <div className="col-span-full">
             <label className="text-slate-900 uppercase font-bold tracking-widest">
               FOR MORE INFORMATION CONTACT
