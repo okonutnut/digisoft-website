@@ -8,7 +8,8 @@ export default function App() {
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="" element={<HomePage />} />
+        <Route path="/home" element={<HomePage />} />
         <Route path="/list-of-clients" element={<ListOfClients />} />
         <Route path="/products/:id" element={<ProductPreview />} />
       </Routes>
