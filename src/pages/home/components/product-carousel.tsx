@@ -13,7 +13,11 @@ export default function ProductCarousel() {
   const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
   return (
     <>
-      <Carousel plugins={[plugin.current]} className="h-screen" id="element">
+      <Carousel
+        plugins={[plugin.current]}
+        className="h-screen bg-custom-img1"
+        id="element"
+      >
         <CarouselContent>
           {products.map((product, index: number) => (
             <CarouselItem key={index}>

@@ -5,6 +5,7 @@ const Footer = React.lazy(() => import("./footer"));
 const AppSidebar = React.lazy(() => import("./sidebar"));
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { Separator } from "../ui/separator";
+import { ThemeProvider } from "../theme-provider";
 
 interface PageLayoutProps {
   children: React.ReactNode;
@@ -25,7 +26,7 @@ export default function PageLayout({
   menuItems,
 }: PageLayoutProps) {
   return (
-    <>
+    <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
       {hasSidebar && (
         <SidebarProvider>
           <AppSidebar
@@ -42,7 +43,7 @@ export default function PageLayout({
       )}
       {hasNavbar && (
         <>
-          <main className={cn(className, "2xl:container mx-auto")}>
+          <main className={cn(className, "mx-auto")}>
             <NavBar />
             {children}
           </main>
@@ -50,6 +51,6 @@ export default function PageLayout({
           <Footer className="2xl:container" />
         </>
       )}
-    </>
+    </ThemeProvider>
   );
 }

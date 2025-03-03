@@ -15,6 +15,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { ModeToggle } from "@/components/mode-toggle";
 
 export default function ProductPreview() {
   const { id } = useParams();
@@ -25,7 +26,7 @@ export default function ProductPreview() {
 
   return (
     <PageLayout
-      className="bg-white px-6"
+      className="px-6"
       hasSidebar
       productTitle={id?.toUpperCase()}
       pageName="Products"
@@ -37,17 +38,20 @@ export default function ProductPreview() {
       ]}
     >
       <section className="my-8 flex flex-col gap-5 items-start min-h-screen">
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/">Home</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>{id}</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
+        <div className="w-full flex justify-between items-center">
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/">Home</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>{id}</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+          <ModeToggle />
+        </div>
 
         {/* TITLE */}
         <ContentHeader
@@ -59,10 +63,10 @@ export default function ProductPreview() {
         {/* FAQ */}
         {data?.faq && data?.faq.length > 0 && (
           <ContentCard title="FAQ" id="faq">
-            <ul className="text-slate-900">
+            <ul>
               {data?.faq.map((item: string, index: number) => (
                 <li key={index}>
-                  <span className="flex gap-2 2xl:text-lg sm:text-xs">
+                  <span className="flex gap-2 2xl:text-lg xs:text-[12px]">
                     <Check />
                     <strong>{item}</strong>
                   </span>
@@ -78,10 +82,7 @@ export default function ProductPreview() {
             {data?.download && data.download.length > 0 ? (
               <>
                 <p className="font-semibold my-0">
-                  Get{" "}
-                  <span className="text-primary text-sm">
-                    {id?.toUpperCase()}
-                  </span>
+                  GET <span className="text-primary">{id?.toUpperCase()}</span>
                 </p>
                 <DownloadVersion
                   className="xs:min-w-full 2xl:min-w-[500px] xl:min-w-[400px] lg:min-w-[300px] md:min-w-[200px] sm:min-w-[150px]"

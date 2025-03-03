@@ -33,7 +33,7 @@ export default function ListOfClients() {
 
   return (
     <PageLayout
-      className="bg-white px-6"
+      className="px-6"
       hasSidebar
       productTitle="Menu"
       pageName="Clients"

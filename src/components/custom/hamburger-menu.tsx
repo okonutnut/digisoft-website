@@ -1,4 +1,4 @@
-import { AlignJustify } from "lucide-react";
+import { AlignJustify, Boxes, ListOrdered } from "lucide-react";
 import { Button } from "../ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import {
@@ -24,23 +24,26 @@ export default function HamburgerMenu() {
             variant={"ghost"}
             className="block md:hidden lg:hidden xl:hidden 2xl:hidden"
           >
-            <AlignJustify className="text-black h-10 w-10" />
+            <AlignJustify className=" h-10 w-10" />
           </Button>
         </SheetTrigger>
         <SheetContent className="py-10" side={"left"}>
           <Accordion type="single" collapsible>
             <AccordionItem value="item-1" className="border-none">
-              <AccordionTrigger className="underline text-sm font-medium">
-                {menuItems.title}
+              <AccordionTrigger className="text-sm font-medium">
+                <span className="flex items-center gap-2">
+                  <Boxes className="h-4 w-4" />
+                  {menuItems.title}
+                </span>
               </AccordionTrigger>
-              <AccordionContent>
+              <AccordionContent className="p-2">
                 <ul>
                   {menuItems.items.map((component, index: number) => (
-                    <li className="text-start my-1" key={index}>
+                    <li className="my-1" key={index}>
                       <Link
                         key={index}
                         to={component.href}
-                        className="text-xs underline text-slate-900"
+                        className="text-xs underline"
                       >
                         {component.title}
                       </Link>
@@ -50,12 +53,12 @@ export default function HamburgerMenu() {
               </AccordionContent>
             </AccordionItem>
           </Accordion>
-          <Link
-            to={"/list-of-clients"}
-            className="text-sm font-medium underline"
-          >
-            List of Clients
-          </Link>
+          <span className="flex items-center gap-2">
+            <ListOrdered className="h-4 w-4" />
+            <Link to={"/list-of-clients"} className="text-sm font-medium">
+              List of Clients
+            </Link>
+          </span>
         </SheetContent>
       </Sheet>
     </>
