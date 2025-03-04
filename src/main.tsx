@@ -1,31 +1,25 @@
 import { StrictMode, lazy } from "react";
 import { createRoot } from "react-dom/client";
-import "./index.css";
-import { createHashRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 const HomePage = lazy(() => import("./pages/home/page"));
 const ProductPreview = lazy(() => import("./pages/preview/page"));
 const ListOfClients = lazy(() => import("./pages/listofclients/page"));
+import "./index.css";
 
-const routes = createHashRouter(
-  [
-    {
-      path: "/",
-      element: <HomePage />,
-    },
-    {
-      path: "/list-of-clients",
-      element: <ListOfClients />,
-    },
-    {
-      path: "/products/:id",
-      element: <ProductPreview />,
-    },
-  ],
+const routes = createBrowserRouter([
   {
-    window: window,
-    basename: "/digisoft-redesign",
-  }
-);
+    path: "/",
+    element: <HomePage />,
+  },
+  {
+    path: "/list-of-clients",
+    element: <ListOfClients />,
+  },
+  {
+    path: "/products/:id",
+    element: <ProductPreview />,
+  },
+]);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

@@ -27,7 +27,7 @@ export default function NavBar() {
   );
   return (
     <nav className="w-full text-current bg-current/30 backdrop-blur-sm 2xl:py-6 xs:py-3 fixed top-0 z-50">
-      <div className="px-2 mx-auto flex justify-between items-center">
+      <div className="w-full px-2 mx-auto flex justify-between items-center">
         <span className="w-full flex items-center xs:justify-between space-x-1">
           <HamburgerMenu />
           <Link
@@ -41,14 +41,14 @@ export default function NavBar() {
           </span>
         </span>
         <NavigationMenu className="hidden md:block lg:block xl:block 2xl:block">
-          <NavigationMenuList>
+          <NavigationMenuList className="w-full flex justify-between space-x-4">
             {menuItems.map((item) => (
-              <NavigationMenuItem key={item.title}>
+              <NavigationMenuItem key={item.title} className="ml-[150px]">
                 <NavigationMenuTrigger className="bg-transparent hover:bg-transparent active:bg-transparent focus:bg-transparent">
                   {item.title}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] 2xl:w-[500px]">
+                  <ul className="w-[450px] grid grid-cols-2 p-1">
                     {item.items.map((component) => (
                       <ListItem
                         className="text-primary col-span-full"
@@ -64,17 +64,15 @@ export default function NavBar() {
               </NavigationMenuItem>
             ))}
             <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <Link
-                  to="/list-of-clients"
-                  className={cn(
-                    navigationMenuTriggerStyle(),
-                    "bg-transparent hover:bg-transparent active:bg-transparent focus:bg-transparent"
-                  )}
-                >
-                  List of Clients
-                </Link>
-              </NavigationMenuLink>
+              <Link
+                to="/list-of-clients"
+                className={cn(
+                  navigationMenuTriggerStyle(),
+                  "bg-transparent hover:bg-transparent active:bg-transparent focus:bg-transparent"
+                )}
+              >
+                <NavigationMenuLink>List of Clients</NavigationMenuLink>
+              </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <ModeToggle />
@@ -102,7 +100,7 @@ const ListItem = React.forwardRef<
           {...props}
         >
           <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+          <p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
             {children}
           </p>
         </Link>
