@@ -23,6 +23,7 @@ const routes = createHashRouter(
   ],
   {
     window: window,
+    basename: "/digisoft-redesign",
   }
 );
 
