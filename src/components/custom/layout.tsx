@@ -43,7 +43,7 @@ export default function PageLayout({
       )}
       {hasNavbar && (
         <>
-          <main className={cn(className, "mx-auto")}>
+          <main className={cn(className, "w-screen mx-auto")}>
             <NavBar />
             {children}
           </main>

@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 const HomePage = lazy(() => import("./pages/home/page"));
 const ProductPreview = lazy(() => import("./pages/preview/page"));
 const ListOfClients = lazy(() => import("./pages/listofclients/page"));
+const ReleaseNotes = lazy(() => import("./pages/releasenotes/page"));
 import "./index.css";
 
 const routes = createBrowserRouter([
@@ -14,6 +15,10 @@ const routes = createBrowserRouter([
   {
     path: "/list-of-clients",
     element: <ListOfClients />,
+  },
+  {
+    path: "/release-notes",
+    element: <ReleaseNotes />,
   },
   {
     path: "/products/:id",

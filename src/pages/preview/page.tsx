@@ -16,6 +16,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { ModeToggle } from "@/components/mode-toggle";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 
 export default function ProductPreview() {
   const { id } = useParams();
@@ -26,7 +27,7 @@ export default function ProductPreview() {
 
   return (
     <PageLayout
-      className="px-6"
+      className="px-2"
       hasSidebar
       productTitle={id?.toUpperCase()}
       pageName="Products"
@@ -37,8 +38,19 @@ export default function ProductPreview() {
         { title: "Brochures", id: "brochure" },
       ]}
     >
-      <section className="my-8 flex flex-col gap-5 items-start min-h-screen">
-        <div className="w-full flex justify-between items-center">
+      <section className="w-full my-3 flex flex-col gap-5 min-h-screen">
+        {/* HEADER */}
+        <div className="xs:flex md:hidden lg:hidden xl:hidden 2xl:hidden w-full justify-between items-center px-2">
+          <SidebarTrigger />
+          <Link
+            to="/"
+            className="xl:text-2xl xs:text-xl font-bold text-current"
+          >
+            DIGITAL SOFTWARE
+          </Link>
+          <ModeToggle />
+        </div>
+        <div className="w-full xs:hidden md:flex lg:flex xl:flex 2xl:flex justify-between items-center">
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
@@ -46,7 +58,9 @@ export default function ProductPreview() {
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbPage className="cursor-default">{id}</BreadcrumbPage>
+                <BreadcrumbPage className="cursor-default">
+                  List of Clients
+                </BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>

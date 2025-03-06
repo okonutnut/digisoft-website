@@ -23,12 +23,11 @@ export default function AppSidebar({
   pageName,
   menuItems,
 }: AppSidebarProps) {
-  const scrollIntoElement = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-  };
+  function scrollIntoElement(id: string) {
+    document
+      .getElementById(id)
+      ?.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
   return (
     <Sidebar>
       <SidebarHeader>

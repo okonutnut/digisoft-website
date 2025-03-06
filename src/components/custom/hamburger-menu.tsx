@@ -1,4 +1,4 @@
-import { AlignJustify, Boxes, ListOrdered } from "lucide-react";
+import { AlignJustify, Boxes, ListOrdered, Rocket } from "lucide-react";
 import { Button } from "../ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import {
@@ -27,10 +27,10 @@ export default function HamburgerMenu() {
             <AlignJustify className=" h-10 w-10" />
           </Button>
         </SheetTrigger>
-        <SheetContent className="py-10" side={"left"}>
+        <SheetContent className="py-10 flex flex-col gap-4" side={"left"}>
           <Accordion type="single" collapsible>
             <AccordionItem value="item-1" className="border-none">
-              <AccordionTrigger className="text-sm font-medium">
+              <AccordionTrigger className="text-sm font-medium py-0">
                 <span className="flex items-center gap-2">
                   <Boxes className="h-4 w-4" />
                   {menuItems.title}
@@ -53,6 +53,12 @@ export default function HamburgerMenu() {
               </AccordionContent>
             </AccordionItem>
           </Accordion>
+          <span className="flex items-center gap-2">
+            <Rocket className="h-4 w-4" />
+            <Link to={"/release-notes"} className="text-sm font-medium">
+              Release Notes
+            </Link>
+          </span>
           <span className="flex items-center gap-2">
             <ListOrdered className="h-4 w-4" />
             <Link to={"/list-of-clients"} className="text-sm font-medium">

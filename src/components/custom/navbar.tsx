@@ -65,6 +65,17 @@ export default function NavBar() {
             ))}
             <NavigationMenuItem>
               <Link
+                to="/release-notes"
+                className={cn(
+                  navigationMenuTriggerStyle(),
+                  "bg-transparent hover:bg-transparent active:bg-transparent focus:bg-transparent"
+                )}
+              >
+                <NavigationMenuLink>Release Notes</NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link
                 to="/list-of-clients"
                 className={cn(
                   navigationMenuTriggerStyle(),

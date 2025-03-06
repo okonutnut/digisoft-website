@@ -2,11 +2,12 @@ import PageLayout from "@/components/custom/layout";
 import ContentCard from "@/components/custom/content/content-card";
 import ContentHeader from "@/components/custom/content/content-header";
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableRow,
+} from "@/components/ui/table";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -15,34 +16,27 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { GetListOfClients } from "@/hooks/read-excel";
+import { GetAllProducts } from "@/hooks/read-excel";
+import ViewReleaseNotesModal from "./components/modal";
 import { ModeToggle } from "@/components/mode-toggle";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Link } from "react-router-dom";
 
-export default function ListOfClients() {
-  const clients = GetListOfClients();
-  console.log(clients);
-
-  const regionsMap: Record<string, string[]> = {};
-  clients?.forEach((entry) => {
-    Object.entries(entry).forEach(([region, school]) => {
-      if (!regionsMap[region]) {
-        regionsMap[region] = [];
-      }
-      regionsMap[region].push(school);
-    });
-  });
+export default function ReleaseNotes() {
+  const products = GetAllProducts().map((item) => ({
+    code: item.code,
+    title: item.title,
+  }));
 
   return (
     <PageLayout
       className="px-2"
       hasSidebar
+      pageName="Releases"
       productTitle="Navigation"
-      pageName="Clients"
-      menuItems={[{ title: "List of all client", id: "list-of-clients" }]}
+      menuItems={[{ title: "Release Notes", id: "top" }]}
     >
-      <section className="my-3 flex flex-col gap-5">
+      <section className="h-screen my-3 flex flex-col gap-5" id="top">
         {/* HEADER */}
         <div className="xs:flex md:hidden lg:hidden xl:hidden 2xl:hidden w-full justify-between items-center px-2">
           <SidebarTrigger />
@@ -63,36 +57,40 @@ export default function ListOfClients() {
               <BreadcrumbSeparator />
               <BreadcrumbItem>
                 <BreadcrumbPage className="cursor-default">
-                  List of Clients
+                  Release Notes
                 </BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
           <ModeToggle />
         </div>
-
         {/* TITLE */}
         <ContentHeader
-          title="List of Clients"
-          subtitle="List of clients who have purchased / subscribe to the products."
+          title="Release Notes"
+          subtitle="List of release notes for all products"
         />
 
-        {/* LIST OF CLIENTS */}
-        <ContentCard id="list-of-clients">
-          <Accordion type="multiple" className="w-full">
-            {Object.entries(regionsMap).map(([region, schools]) => (
-              <AccordionItem key={region} value={region}>
-                <AccordionTrigger>{region}</AccordionTrigger>
-                <AccordionContent>
-                  <ul className="list-disc pl-5">
-                    {schools.map((school, index) => (
-                      <li key={index}>{school}</li>
-                    ))}
-                  </ul>
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+        {/* TABLE OF RELEASE NOTES */}
+        <ContentCard>
+          <Table>
+            <TableCaption>
+              A list of your software products. (Click to view)
+            </TableCaption>
+            <TableBody>
+              {products.map((product, index: number) => (
+                <TableRow key={index}>
+                  <ViewReleaseNotesModal
+                    title={product.title}
+                    code={product.code}
+                  >
+                    <TableCell className="font-medium py-2">
+                      {product.title}
+                    </TableCell>
+                  </ViewReleaseNotesModal>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
         </ContentCard>
       </section>
     </PageLayout>
