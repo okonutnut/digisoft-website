@@ -59,7 +59,7 @@ export default function ProductPreview() {
               <BreadcrumbSeparator />
               <BreadcrumbItem>
                 <BreadcrumbPage className="cursor-default">
-                  List of Clients
+                  {id?.toUpperCase()}
                 </BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
@@ -67,87 +67,90 @@ export default function ProductPreview() {
           <ModeToggle />
         </div>
 
-        {/* TITLE */}
-        <ContentHeader
-          title={data?.title}
-          subtitle={data?.description}
-          id="top"
-        />
+        <section className="p-2">
+          {/* TITLE */}
+          <ContentHeader
+            title={data?.title}
+            subtitle={data?.description}
+            id="top"
+          />
 
-        {/* FAQ */}
-        {data?.faq && data?.faq.length > 0 && (
-          <ContentCard title="FAQ" id="faq">
-            <ul>
-              {data?.faq.map((item: string, index: number) => (
-                <li key={index}>
-                  <span className="flex gap-2 2xl:text-lg xs:text-[12px]">
-                    <Check />
-                    <strong>{item}</strong>
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </ContentCard>
-        )}
-
-        {/* DOWNLOADS */}
-        <ContentCard title="DOWNLOAD" id="download">
-          <div className="flex items-center justify-start gap-3 flex-wrap">
-            {data?.download && data.download.length > 0 ? (
-              <>
-                <p className="font-semibold my-0">
-                  GET <span className="text-primary">{id?.toUpperCase()}</span>
-                </p>
-                <DownloadVersion
-                  className="xs:min-w-full 2xl:min-w-[500px] xl:min-w-[400px] lg:min-w-[300px] md:min-w-[200px] sm:min-w-[150px]"
-                  options={data?.download.map(
-                    (dl: { version: string; link: string }) => {
-                      return { label: dl.version, value: dl.link };
-                    }
-                  )}
-                />
-              </>
-            ) : (
-              "No download available."
-            )}
-          </div>
-        </ContentCard>
-
-        {/* RELEASE NOTES */}
-        <ContentCard
-          title="RELEASE NOTES"
-          id="release"
-          className="2xl:max-w-[50%]"
-        >
-          {getReleaseNotes && getReleaseNotes != "No release notes found." ? (
-            <TextArea value={getReleaseNotes} className="xs:text-xs" />
-          ) : (
-            <p className="italic text-slate-600 text-sm">
-              No release notes available.
-            </p>
-          )}
-        </ContentCard>
-
-        {/* BROCHURES */}
-        <ContentCard title="BROCHURES" id="brochure">
-          {data?.brochure && data?.brochure.length > 0 ? (
-            <ul className="flex justify-start items-center gap-3 flex-wrap">
-              {data?.brochure.map(
-                (item: { title: string; link: string }, index: number) => (
+          {/* FAQ */}
+          {data?.faq && data?.faq.length > 0 && (
+            <ContentCard title="FAQ" id="faq">
+              <ul>
+                {data?.faq.map((item: string, index: number) => (
                   <li key={index}>
-                    <Link to={item.link} className="text-sm underline">
-                      {item.title}
-                    </Link>
+                    <span className="flex gap-2 2xl:text-lg xs:text-[12px]">
+                      <Check />
+                      <strong>{item}</strong>
+                    </span>
                   </li>
-                )
-              )}
-            </ul>
-          ) : (
-            <p className="italic text-slate-600 text-sm">
-              No brochues available.
-            </p>
+                ))}
+              </ul>
+            </ContentCard>
           )}
-        </ContentCard>
+
+          {/* DOWNLOADS */}
+          <ContentCard title="DOWNLOAD" id="download">
+            <div className="flex items-center justify-start gap-3 flex-wrap">
+              {data?.download && data.download.length > 0 ? (
+                <>
+                  <p className="font-semibold my-0">
+                    GET{" "}
+                    <span className="text-primary">{id?.toUpperCase()}</span>
+                  </p>
+                  <DownloadVersion
+                    className="xs:min-w-full 2xl:min-w-[500px] xl:min-w-[400px] lg:min-w-[300px] md:min-w-[200px] sm:min-w-[150px]"
+                    options={data?.download.map(
+                      (dl: { version: string; link: string }) => {
+                        return { label: dl.version, value: dl.link };
+                      }
+                    )}
+                  />
+                </>
+              ) : (
+                "No download available."
+              )}
+            </div>
+          </ContentCard>
+
+          {/* RELEASE NOTES */}
+          <ContentCard
+            title="RELEASE NOTES"
+            id="release"
+            className="2xl:max-w-[50%]"
+          >
+            {getReleaseNotes && getReleaseNotes != "No release notes found." ? (
+              <TextArea value={getReleaseNotes} className="xs:text-xs" />
+            ) : (
+              <p className="italic text-slate-600 text-sm">
+                No release notes available.
+              </p>
+            )}
+          </ContentCard>
+
+          {/* BROCHURES */}
+          <ContentCard title="BROCHURES" id="brochure">
+            {data?.brochure && data?.brochure.length > 0 ? (
+              <ul className="flex justify-start items-center gap-3 flex-wrap">
+                {data?.brochure.map(
+                  (item: { title: string; link: string }, index: number) => (
+                    <li key={index}>
+                      <Link to={item.link} className="text-sm underline">
+                        {item.title}
+                      </Link>
+                    </li>
+                  )
+                )}
+              </ul>
+            ) : (
+              <p className="italic text-slate-600 text-sm">
+                No brochues available.
+              </p>
+            )}
+          </ContentCard>
+        </section>
       </section>
     </PageLayout>
   );

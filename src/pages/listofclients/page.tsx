@@ -35,48 +35,13 @@ export default function ListOfClients() {
   });
 
   return (
-    <PageLayout
-      className="px-2"
-      hasSidebar
-      productTitle="Navigation"
-      pageName="Clients"
-      menuItems={[{ title: "List of all client", id: "list-of-clients" }]}
-    >
-      <section className="my-3 flex flex-col gap-5">
-        {/* HEADER */}
-        <div className="xs:flex md:hidden lg:hidden xl:hidden 2xl:hidden w-full justify-between items-center px-2">
-          <SidebarTrigger />
-          <Link
-            to="/"
-            className="xl:text-2xl xs:text-xl font-bold text-current"
-          >
-            DIGITAL SOFTWARE
-          </Link>
-          <ModeToggle />
-        </div>
-        <div className="w-full xs:hidden md:flex lg:flex xl:flex 2xl:flex justify-between items-center">
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/">Home</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage className="cursor-default">
-                  List of Clients
-                </BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-          <ModeToggle />
-        </div>
-
+    <PageLayout hasNavbar pageName="Clients">
+      <section className="container my-[5rem] flex flex-col gap-5 lg:p-3 xl:p-3 2xl:p-3">
         {/* TITLE */}
         <ContentHeader
           title="List of Clients"
           subtitle="List of clients who have purchased / subscribe to the products."
         />
-
         {/* LIST OF CLIENTS */}
         <ContentCard id="list-of-clients">
           <Accordion type="multiple" className="w-full">

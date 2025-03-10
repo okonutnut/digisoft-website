@@ -15,9 +15,10 @@ export default function ProductCarousel() {
     <>
       <Carousel
         plugins={[plugin.current]}
-        className="h-screen bg-custom-img1"
+        className="h-screen w-full dark:bg-black bg-white  dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex items-center justify-center"
         id="element"
       >
+        <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] bg-custom-1"></div>
         <CarouselContent>
           {products.map((product, index: number) => (
             <CarouselItem key={index}>

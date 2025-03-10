@@ -22,7 +22,7 @@ export default function ProductCard({
           {description}
         </span>
         <Link to={link}>
-          <Button className="w-[130px] xs:h-[30px] xs:text-xs uppercase">
+          <Button className="w-[130px] xs:h-[30px] xs:text-xs uppercase dark:text-white">
             View more
           </Button>
         </Link>

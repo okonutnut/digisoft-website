@@ -19,7 +19,7 @@ export default function NavBar() {
   const menuItems = React.useMemo(
     () => [
       {
-        title: "Products",
+        title: "Browse Products",
         items: productArray,
       },
     ],
@@ -28,7 +28,8 @@ export default function NavBar() {
   return (
     <nav className="w-full text-current bg-current/30 backdrop-blur-sm 2xl:py-6 xs:py-3 fixed top-0 z-50">
       <div className="w-full px-2 mx-auto flex justify-between items-center">
-        <span className="w-full flex items-center xs:justify-between space-x-1">
+        {/* HEADER */}
+        <span className="w-screen flex items-center xs:justify-between space-x-1">
           <HamburgerMenu />
           <Link
             to="/"
@@ -40,15 +41,17 @@ export default function NavBar() {
             <ModeToggle />
           </span>
         </span>
+
+        {/* MENU ITEMS */}
         <NavigationMenu className="hidden md:block lg:block xl:block 2xl:block">
           <NavigationMenuList className="w-full flex justify-between space-x-4">
             {menuItems.map((item) => (
-              <NavigationMenuItem key={item.title} className="ml-[150px]">
+              <NavigationMenuItem key={item.title} className="">
                 <NavigationMenuTrigger className="bg-transparent hover:bg-transparent active:bg-transparent focus:bg-transparent">
                   {item.title}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="w-[450px] grid grid-cols-2 p-1">
+                  <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                     {item.items.map((component) => (
                       <ListItem
                         className="text-primary col-span-full"
@@ -85,6 +88,12 @@ export default function NavBar() {
                 <NavigationMenuLink>List of Clients</NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
+
+        {/* DARK MODE FB */}
+        <NavigationMenu className="hidden md:block lg:block xl:block 2xl:block">
+          <NavigationMenuList className="w-full flex justify-between">
             <NavigationMenuItem>
               <ModeToggle />
             </NavigationMenuItem>
@@ -100,7 +109,7 @@ const ListItem = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof Link>
 >(({ className, title, children, ...props }, ref) => {
   return (
-    <li>
+    <li className="row-span-3">
       <NavigationMenuLink asChild>
         <Link
           ref={ref}

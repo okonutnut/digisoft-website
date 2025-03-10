@@ -7,7 +7,7 @@ body, html {
   overflow-x: hidden;
 }
 
-.bg-custom-img1 {
+.bg-custom-1 {
   background-image: url("/images/gradient_blur.png");
   background-size: cover;
   background-repeat: no-repeat;
