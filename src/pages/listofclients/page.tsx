@@ -7,22 +7,10 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
 import { GetListOfClients } from "@/hooks/read-excel";
-import { ModeToggle } from "@/components/mode-toggle";
-import { SidebarTrigger } from "@/components/ui/sidebar";
-import { Link } from "react-router-dom";
 
 export default function ListOfClients() {
   const clients = GetListOfClients();
-  console.log(clients);
 
   const regionsMap: Record<string, string[]> = {};
   clients?.forEach((entry) => {

@@ -67,7 +67,7 @@ export default function ProductPreview() {
           <ModeToggle />
         </div>
 
-        <section className="p-2">
+        <section className="p-2 gap-2 flex flex-col">
           {/* TITLE */}
           <ContentHeader
             title={data?.title}

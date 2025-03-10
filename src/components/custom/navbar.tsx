@@ -26,10 +26,10 @@ export default function NavBar() {
     [productArray]
   );
   return (
-    <nav className="w-full text-current bg-current/30 backdrop-blur-sm 2xl:py-6 xs:py-3 fixed top-0 z-50">
+    <nav className="w-full text-current bg-current/30 backdrop-blur-md 2xl:py-6 xs:py-3 fixed top-0 z-50">
       <div className="w-full px-2 mx-auto flex justify-between items-center">
         {/* HEADER */}
-        <span className="w-screen flex items-center xs:justify-between space-x-1">
+        <span className="flex items-center xs:justify-between space-x-1 xs:w-screen sm:w-screen md:w-auto lg:w-auto xl:w-auto 2xl:w-auto">
           <HamburgerMenu />
           <Link
             to="/"
@@ -51,7 +51,7 @@ export default function NavBar() {
                   {item.title}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                  <ul className="grid grid-cols-2 gap-3 p-4 w-[500px]">
                     {item.items.map((component) => (
                       <ListItem
                         className="text-primary col-span-full"
@@ -109,7 +109,7 @@ const ListItem = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof Link>
 >(({ className, title, children, ...props }, ref) => {
   return (
-    <li className="row-span-3">
+    <li className="col-span-1">
       <NavigationMenuLink asChild>
         <Link
           ref={ref}

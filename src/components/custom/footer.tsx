@@ -1,6 +1,6 @@
 import { GetAllProducts } from "@/hooks/read-excel";
 import { cn } from "@/lib/utils";
-import { Facebook, MailIcon, Phone } from "lucide-react";
+import { Facebook, MailIcon, Phone, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface FooterProps {
@@ -47,15 +47,22 @@ export default function Footer({ className }: FooterProps) {
             </div>
             <ul className="xs:text-xs">
               <li className="flex items-center gap-2 mb-1">
-                <MailIcon />
-                <span>tcsadul@yahoo.com</span>
+                <MailIcon className="w-4" />
+                <span>digisoftphofficial@gmail.com</span>
               </li>
               <li className="flex items-center gap-2 mb-1">
-                <Phone />
+                <Phone className="w-4" />
                 <span>Globe: 09278591168 | Smart: 09214524212</span>
               </li>
               <li className="flex items-center gap-2 mb-1">
-                <Facebook />
+                <MapPin className="w-4" />
+                <span>
+                  29/F Penthouse, World Plaza, 5th Avenue, Bonifacio Global
+                  City, Taguig, Philippines
+                </span>
+              </li>
+              <li className="flex items-center gap-2 mb-1">
+                <Facebook className="w-4" />
                 <Link
                   to={"https://www.facebook.com/DigiSoftPH/"}
                   target="_blank"

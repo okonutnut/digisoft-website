@@ -116,29 +116,34 @@ export default {
 					"100%": {
 					  transform: "translateX(-50%) translateY(-10%)",
 					},
-				  },
-				  moveInCircle: {
-					"0%": {
-					  transform: "rotate(0deg)",
+				},
+				moveInCircle: {
+				"0%": {
+					transform: "rotate(0deg)",
+				},
+				"50%": {
+					transform: "rotate(180deg)",
+				},
+				"100%": {
+					transform: "rotate(360deg)",
+				},
+				},
+				moveVertical: {
+				"0%": {
+					transform: "translateY(-50%)",
+				},
+				"50%": {
+					transform: "translateY(50%)",
+				},
+				"100%": {
+					transform: "translateY(-50%)",
+				},
+				},
+				scroll: {
+					to: {
+					  transform: "translate(calc(-50% - 0.5rem))",
 					},
-					"50%": {
-					  transform: "rotate(180deg)",
-					},
-					"100%": {
-					  transform: "rotate(360deg)",
-					},
-				  },
-				  moveVertical: {
-					"0%": {
-					  transform: "translateY(-50%)",
-					},
-					"50%": {
-					  transform: "translateY(50%)",
-					},
-					"100%": {
-					  transform: "translateY(-50%)",
-					},
-				  },
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -148,6 +153,7 @@ export default {
 				third: "moveInCircle 40s linear infinite",
 				fourth: "moveHorizontal 40s ease infinite",
 				fifth: "moveInCircle 20s ease infinite",
+				scroll: "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
 			}
 		}
 	},
@@ -181,10 +187,10 @@ export default {
 function addVariablesForColors({ addBase, theme }: any) {
 	let allColors = flattenColorPalette(theme("colors"));
 	let newVars = Object.fromEntries(
-	  Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+		Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
 	);
-   
+
 	addBase({
-	  ":root": newVars,
+		":root": newVars,
 	});
-  }
+}
