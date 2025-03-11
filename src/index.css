@@ -14,6 +14,13 @@ body, html {
   background-position: center;
 }
 
+.bg-custom-2 {
+  background-image: url("/images/info-tech1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 @layer base {
   :root {
     --gradient: #000046;

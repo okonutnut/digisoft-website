@@ -2,6 +2,15 @@ import React from "react";
 import { cn } from "@/lib/utils";
 import createGlobe from "cobe";
 import { useEffect, useRef } from "react";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 export function FeaturesSectionDemo() {
   const features = [
@@ -15,14 +24,14 @@ export function FeaturesSectionDemo() {
     {
       title: "LMS in the Philippines",
       description:
-        "The FIRST and ONLY school software with INTEGRATED Learning Management System (LMS) in the Philippines.",
+        "The FIRST and ONLY school software with INTEGRATED Learning Management System (LMS)",
       skeleton: <SkeletonTwo />,
       className: "border-b col-span-1 lg:col-span-2 dark:border-neutral-800",
     },
     {
       title: "Continuous Improvement",
       description:
-        "The ONLY school software in the Philippines that is CONTINUOUSLY IMPROVED (Since 1998) DOWNLOADABLE, UPGRADEABLE UNIFIED SYSTEM",
+        "The ONLY school software that is CONTINUOUSLY IMPROVED (Since 1998) DOWNLOADABLE, UPGRADEABLE UNIFIED SYSTEM",
       skeleton: <SkeletonThree />,
       className:
         "col-span-1 lg:col-span-3 lg:border-r  dark:border-neutral-800",
@@ -31,7 +40,7 @@ export function FeaturesSectionDemo() {
       title: "Availability",
       description:
         "The ONLY school software which is 100% Desktop and MOBILE friendly (ALL User Interfaces: Admin, Trans, Tools & Reports)",
-      skeleton: <></>,
+      skeleton: <SkeletonFour />,
       className: "col-span-1 lg:col-span-3 lg:border-none",
     },
   ];
@@ -152,16 +161,19 @@ export const SkeletonTwo = () => {
   ];
   return (
     <div className="relative flex flex-col items-start p-8 gap-10 h-full overflow-hidden">
-      {/* TODO */}
-      <ul className="w-full text-center">
-        {softwares.map((software, idx) => (
-          <li className="space-x-2" key={software.title + idx}>
-            <strong>{software.title}</strong> ({software.creator})
-          </li>
-        ))}
-      </ul>
-      <div className="absolute left-0 z-[100] inset-y-0 w-20 bg-gradient-to-r from-white dark:from-black to-transparent  h-full pointer-events-none" />
-      <div className="absolute right-0 z-[100] inset-y-0 w-20 bg-gradient-to-l from-white dark:from-black  to-transparent h-full pointer-events-none" />
+      <Table className="px-3">
+        <TableBody>
+          {softwares.map((software, idx) => (
+            <TableRow key={idx}>
+              <TableCell className="font-medium">{software.title}</TableCell>
+              <TableCell className="text-right">{software.creator}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+
+      <div className="absolute left-0 z-[100] inset-y-0 w-10 bg-gradient-to-r from-white dark:from-black to-transparent  h-full pointer-events-none" />
+      <div className="absolute right-0 z-[100] inset-y-0 w-10 bg-gradient-to-l from-white dark:from-black  to-transparent h-full pointer-events-none" />
     </div>
   );
 };
@@ -172,9 +184,10 @@ export const SkeletonThree = () => {
       <div className="flex flex-1 w-full h-full flex-col space-y-2  relative">
         {/* TODO */}
         <img
-          src="/images/unified.png"
+          src="/images/continuous.webp"
           alt="header"
-          className="object-cover object-center"
+          width={"80%"}
+          className="object-cover object-center mx-auto"
         />
       </div>
     </div>
@@ -184,7 +197,12 @@ export const SkeletonThree = () => {
 export const SkeletonFour = () => {
   return (
     <div className="h-60 md:h-60  flex flex-col items-center relative bg-transparent dark:bg-transparent mt-10">
-      <Globe className="absolute -right-10 md:-right-10 -bottom-80 md:-bottom-72" />
+      <img
+        src="/images/availability.webp"
+        alt="header"
+        width={"80%"}
+        className="object-cover object-center mx-auto"
+      />
     </div>
   );
 };
