@@ -72,7 +72,11 @@ export function DownloadVersion({ options, className }: DownloadVersionProps) {
         </PopoverContent>
       </Popover>
       {value && (
-        <Link to={`${value}`} target="_blank" className="w-full">
+        <Link
+          to={`${value}`}
+          target="_blank"
+          className="xs:w-full sm:w-full md:w-[200px] lg:w-[200px] xl:w-[200px] 2xl:w-[200px]"
+        >
           <Button className="w-full dark:text-white">Download</Button>
         </Link>
       )}

@@ -101,7 +101,7 @@ export default function ProductPreview() {
                     <span className="text-primary">{id?.toUpperCase()}</span>
                   </p>
                   <DownloadVersion
-                    className="xs:min-w-full 2xl:min-w-[500px] xl:min-w-[400px] lg:min-w-[300px] md:min-w-[200px] sm:min-w-[150px]"
+                    className="xs:min-w-full sm:min-w-full md:min-w-[200px] 2xl:min-w-[500px] xl:min-w-[400px] lg:min-w-[300px]"
                     options={data?.download.map(
                       (dl: { version: string; link: string }) => {
                         return { label: dl.version, value: dl.link };
