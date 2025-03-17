@@ -28,7 +28,6 @@ export default function ProductPreview() {
   return (
     <PageLayout
       hasSidebar
-      productTitle={id?.toUpperCase()}
       pageName="Products"
       menuItems={[
         { title: "Overview", id: "top" },

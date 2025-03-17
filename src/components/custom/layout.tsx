@@ -12,7 +12,6 @@ interface PageLayoutProps {
   className?: string;
   hasNavbar?: boolean;
   hasSidebar?: boolean;
-  productTitle?: string;
   pageName?: string;
   menuItems?: { title: string; id: string }[];
 }
@@ -21,7 +20,6 @@ export default function PageLayout({
   className,
   hasNavbar,
   hasSidebar,
-  productTitle,
   pageName,
   menuItems,
 }: PageLayoutProps) {
@@ -29,11 +27,7 @@ export default function PageLayout({
     <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
       {hasSidebar && (
         <SidebarProvider>
-          <AppSidebar
-            productTitle={productTitle}
-            pageName={pageName}
-            menuItems={menuItems}
-          />
+          <AppSidebar pageName={pageName} menuItems={menuItems} />
           <main className={cn(className, "w-screen mx-auto")}>
             {children}
             <Separator />
