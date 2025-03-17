@@ -17,12 +17,12 @@ export default function ReleaseNotes() {
   }));
 
   return (
-    <PageLayout hasNavbar pageName="Releases">
-      <section className="container min-h-screen mt-[5rem] flex flex-col gap-5 lg:p-3 xl:p-3 2xl:p-3">
+    <PageLayout hasNavbar>
+      <section className="container min-h-screen mt-[1rem] flex flex-col gap-5 p-0">
         {/* TITLE */}
         <ContentHeader
           title="Release Notes"
-          subtitle="List of release notes for all products"
+          subtitle="List of release notes of all products"
         />
 
         {/* ACCORDION OF RELEASE NOTES */}

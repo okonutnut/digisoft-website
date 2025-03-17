@@ -102,18 +102,15 @@ const FeatureDescription = ({ children }: { children?: React.ReactNode }) => {
 
 export const SkeletonOne = () => {
   return (
-    <div className="relative flex py-8 px-2 gap-10 h-full">
-      <div className="w-full p-5 mx-auto bg-white dark:bg-neutral-900 shadow-2xl group h-full flex justify-center items-center">
+    <div className="bg-white relative flex py-5 px-2 gap-10 h-auto">
+      <div className="w-full mx-auto h-full flex justify-center items-center">
         {/* TODO */}
         <img
           src="/images/list-of-products.png"
           alt="list-of-produtcs"
-          className="object-center"
+          className="object-center py-5"
         />
       </div>
-
-      <div className="absolute bottom-0 z-40 inset-x-0 h-[120px] bg-gradient-to-t from-white dark:from-black via-white dark:via-black to-transparent w-full pointer-events-none" />
-      <div className="absolute top-0 z-40 inset-x-0 h-[150px] bg-gradient-to-b from-white dark:from-black via-transparent to-transparent w-full pointer-events-none" />
     </div>
   );
 };
@@ -154,8 +151,8 @@ export const SkeletonTwo = () => {
     },
   ];
   return (
-    <div className="relative flex flex-col items-start p-8 gap-10 h-full overflow-hidden">
-      <Table className="px-3">
+    <div className="relative flex flex-col items-start gap-10 h-full overflow-hidden">
+      <Table className="px-3 text-current">
         <TableBody>
           {softwares.map((software, idx) => (
             <TableRow key={idx}>
@@ -164,10 +161,7 @@ export const SkeletonTwo = () => {
             </TableRow>
           ))}
         </TableBody>
-      </Table>
-
-      <div className="absolute left-0 z-[100] inset-y-0 w-10 bg-gradient-to-r from-white dark:from-black to-transparent  h-full pointer-events-none" />
-      <div className="absolute right-0 z-[100] inset-y-0 w-10 bg-gradient-to-l from-white dark:from-black  to-transparent h-full pointer-events-none" />
+      </Table>{" "}
     </div>
   );
 };
@@ -178,9 +172,8 @@ export const SkeletonThree = () => {
       <div className="flex flex-1 w-full h-full flex-col space-y-2  relative">
         {/* TODO */}
         <img
-          src="/images/continuous.webp"
+          src="/images/continuous.png"
           alt="header"
-          width={"80%"}
           className="object-cover object-center mx-auto"
         />
       </div>
@@ -192,10 +185,9 @@ export const SkeletonFour = () => {
   return (
     <div className="h-60 md:h-60  flex flex-col items-center relative bg-transparent dark:bg-transparent mt-10">
       <img
-        src="/images/availability.webp"
+        src="/images/availability.png"
         alt="header"
-        width={"80%"}
-        className="object-cover object-center mx-auto"
+        className="object-cover object-center mx-auto bg-white"
       />
     </div>
   );

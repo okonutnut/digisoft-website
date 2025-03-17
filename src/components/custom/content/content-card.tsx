@@ -16,7 +16,7 @@ export default function ContentCard({
   return (
     <div id={id} className={cn(className, "w-full")}>
       {title && (
-        <h2 className="2xl:text-lg xs:text-md font-bold text-primary">
+        <h2 className="2xl:text-lg xs:text-md font-bold text-primary mb-2">
           {title}
         </h2>
       )}

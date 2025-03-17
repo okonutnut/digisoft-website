@@ -22,7 +22,7 @@ export default function HamburgerMenu() {
         <SheetTrigger asChild>
           <Button
             variant={"ghost"}
-            className="block md:hidden lg:hidden xl:hidden 2xl:hidden"
+            className="block md:hidden lg:hidden xl:hidden 2xl:hidden p-2 h-7 w-7"
           >
             <AlignJustify className=" h-10 w-10" />
           </Button>
@@ -39,13 +39,9 @@ export default function HamburgerMenu() {
               <AccordionContent className="p-2">
                 <ul>
                   {menuItems.items.map((component, index: number) => (
-                    <li className="my-1" key={index}>
-                      <Link
-                        key={index}
-                        to={component.href}
-                        className="text-xs underline"
-                      >
-                        {component.title}
+                    <li className="my-2" key={index}>
+                      <Link key={index} to={component.href} className="text-sm">
+                        {component.code}
                       </Link>
                     </li>
                   ))}

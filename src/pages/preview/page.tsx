@@ -16,7 +16,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { ModeToggle } from "@/components/mode-toggle";
-import { SidebarTrigger } from "@/components/ui/sidebar";
+import MobileNav from "./components/mobile-nav";
 
 export default function ProductPreview() {
   const { id } = useParams();
@@ -27,7 +27,6 @@ export default function ProductPreview() {
 
   return (
     <PageLayout
-      className="px-2"
       hasSidebar
       productTitle={id?.toUpperCase()}
       pageName="Products"
@@ -38,19 +37,10 @@ export default function ProductPreview() {
         { title: "Brochures", id: "brochure" },
       ]}
     >
-      <section className="w-full my-3 flex flex-col gap-5 min-h-screen">
+      <section className="w-full flex flex-col gap-5 min-h-screen">
         {/* HEADER */}
-        <div className="xs:flex md:hidden lg:hidden xl:hidden 2xl:hidden w-full justify-between items-center px-2">
-          <SidebarTrigger />
-          <Link
-            to="/"
-            className="xl:text-2xl xs:text-xl font-bold text-current"
-          >
-            DIGITAL SOFTWARE
-          </Link>
-          <ModeToggle />
-        </div>
-        <div className="w-full xs:hidden md:flex lg:flex xl:flex 2xl:flex justify-between items-center">
+        <MobileNav />
+        <div className="w-full xs:hidden md:flex lg:flex xl:flex 2xl:flex justify-between items-center my-3">
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
@@ -67,7 +57,7 @@ export default function ProductPreview() {
           <ModeToggle />
         </div>
 
-        <section className="p-2 gap-2 flex flex-col">
+        <section className="px-4 gap-2 flex flex-col">
           {/* TITLE */}
           <ContentHeader
             title={data?.title}
@@ -95,20 +85,14 @@ export default function ProductPreview() {
           <ContentCard title="DOWNLOAD" id="download">
             <div className="flex items-center justify-start gap-3 flex-wrap">
               {data?.download && data.download.length > 0 ? (
-                <>
-                  <p className="font-semibold my-0">
-                    GET{" "}
-                    <span className="text-primary">{id?.toUpperCase()}</span>
-                  </p>
-                  <DownloadVersion
-                    className="xs:min-w-full sm:min-w-full md:min-w-[200px] 2xl:min-w-[500px] xl:min-w-[400px] lg:min-w-[300px]"
-                    options={data?.download.map(
-                      (dl: { version: string; link: string }) => {
-                        return { label: dl.version, value: dl.link };
-                      }
-                    )}
-                  />
-                </>
+                <DownloadVersion
+                  className="xs:min-w-full sm:min-w-full md:min-w-[200px] 2xl:min-w-[500px] xl:min-w-[400px] lg:min-w-[300px]"
+                  options={data?.download.map(
+                    (dl: { version: string; link: string }) => {
+                      return { label: dl.version, value: dl.link };
+                    }
+                  )}
+                />
               ) : (
                 "No download available."
               )}

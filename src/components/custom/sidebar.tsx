@@ -4,7 +4,6 @@ import {
   SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
@@ -14,15 +13,10 @@ import { Separator } from "../ui/separator";
 import { Link } from "react-router-dom";
 
 interface AppSidebarProps {
-  productTitle?: string;
   pageName?: string;
   menuItems?: { title: string; id: string }[];
 }
-export default function AppSidebar({
-  productTitle,
-  pageName,
-  menuItems,
-}: AppSidebarProps) {
+export default function AppSidebar({ pageName, menuItems }: AppSidebarProps) {
   function scrollIntoElement(id: string) {
     document
       .getElementById(id)
@@ -30,7 +24,7 @@ export default function AppSidebar({
   }
   return (
     <Sidebar>
-      <SidebarHeader>
+      <SidebarHeader className="bg-[#4996C9] dark:bg-[#004580] py-5">
         <div className="flex justify-between items-center my-3 text-current">
           <Link to="/" className="text-md uppercase font-bold">
             DIGITAL SOFTWARE
@@ -41,11 +35,6 @@ export default function AppSidebar({
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          {productTitle && (
-            <SidebarGroupLabel className="text-primary text-md uppercase cursor-default">
-              {productTitle}
-            </SidebarGroupLabel>
-          )}
           <SidebarGroupContent>
             <SidebarMenu>
               {menuItems?.map((item, index) => (

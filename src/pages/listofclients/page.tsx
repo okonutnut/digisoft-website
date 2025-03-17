@@ -24,7 +24,7 @@ export default function ListOfClients() {
 
   return (
     <PageLayout hasNavbar pageName="Clients">
-      <section className="container my-[5rem] flex flex-col gap-5 lg:p-3 xl:p-3 2xl:p-3">
+      <section className="container my-[1rem] flex flex-col gap-5 p-0">
         {/* TITLE */}
         <ContentHeader
           title="List of Clients"

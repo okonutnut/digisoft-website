@@ -26,15 +26,16 @@ export default function NavBar() {
     [productArray]
   );
   return (
-    <nav className="w-full text-current bg-current/30 backdrop-blur-md 2xl:py-6 xs:py-3 fixed top-0 z-50">
-      <div className="w-full px-2 mx-auto flex justify-between items-center">
+    <nav className="w-full text-current bg-[#4996C9] dark:bg-[#004580] 2xl:p-4 xs:p-2 z-50">
+      <div className="2xl:container xs:w-full sm:w-full mx-auto flex justify-between items-center">
         {/* HEADER */}
-        <span className="flex items-center xs:justify-between space-x-1 xs:w-screen sm:w-screen md:w-auto lg:w-auto xl:w-auto 2xl:w-auto">
+        <span className="flex items-center justify-between xs:justify-between xs:w-screen sm:w-screen md:w-auto lg:w-auto xl:w-auto 2xl:w-auto">
           <HamburgerMenu />
           <Link
             to="/"
-            className="xl:text-2xl xs:text-xl font-bold text-current"
+            className="flex items-center gap-1 2xl:text-lg xl:text-lg lg:text-lg md:text-md sm:text-md xs:text-md font-bold text-current"
           >
+            <img src="/images/logo.png" alt="logo" width={32} />
             DIGITAL SOFTWARE
           </Link>
           <span className="items-center hidden xs:flex sm:flex md:hidden 2xl:hidden lx:hidden lg:hidden">

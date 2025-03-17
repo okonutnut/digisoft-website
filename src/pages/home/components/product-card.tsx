@@ -14,7 +14,7 @@ export default function ProductCard({
 }: ProductCardProps) {
   return (
     <>
-      <section className="flex flex-col justify-center items-center h-screen">
+      <section className="flex flex-col justify-center items-center h-[95vh]">
         <h1 className="2xl:text-6xl xl:text-4xl xs:text-2xl font-bold text-primary 2xl:mb-6 xs:mb-2 cursor-default select-none text-center">
           {`${title}`}
         </h1>
@@ -22,8 +22,8 @@ export default function ProductCard({
           {description}
         </span>
         <Link to={link}>
-          <Button className="w-[130px] xs:h-[30px] xs:text-xs uppercase dark:text-white">
-            View more
+          <Button className="w-[130px] xs:text-xs uppercase dark:text-white bg-[#FEA200]">
+            Download
           </Button>
         </Link>
       </section>
