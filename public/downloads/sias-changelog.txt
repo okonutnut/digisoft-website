@@ -1,13 +1,29 @@
-3.6.3.1 (March 1, 2025)
+3.6.3.7 (March 10, 2025)
 	---!!! UPGRADE NOTES !!!--
 	Must delete "c:\sias\cache" folder
 
 	-1  SIAS Online/Term Grades: Show GWA in ROG pdf report (UPHS JONELTA)
+	-2  SIAS Online/Statement of Accounts: Display the period in blue color as well as in PDF
+	    (SFC Guihulngan City)
+	-3  SIAS Online/Test Permit Reminders: No need to encode the no. in the description
+	-3  SIAS Online/Application for Admission: Fixed justification of very long reminders
+	    (TCU Taguig City)
+	-3  SIAS Online/Application for Admission: Display button "Result" to print the Examination
+	    Test Result (UNP Vigan City)
+	-3  SIAS Online/Application for Admission: Fixed "You are approved for!" to 
+	    "Your application is approved!" (UNP Vigan City)
+	-4  SIAS Online/Subject Charges: Added filters "Subject", "Fee" and "COA" (CPU Iloilo City)
+	-4  SIAS Online/Subject Charges: Added columns "Fee Code" and "COA Code" (CPU Iloilo City)
+	-4  SIAS Online/Subject Charges: Additional charges are displayed in separate rows 
+	-4  SIAS Online/Assessment Setup: Added column "Fee Code" (CPU Iloilo City)
+    	-5  SIAS Online/Tools-Options-Registrar: Added checkbox "Hide grade when student 
+	    has amount due" (CSAV Victorias City, DWCSJ San Jose)
+	-6  SIAS Online/Final Grades: Added support for hiding grades when student has amount due 
+	    (DWCSJ San Jose)
+	-7  SIAS Online/Term Grades: Fixed hiding of term grades with amount due
 
-3.6.2.25 (February 28, 2024)
-	---!!! UPGRADE NOTES !!!--
-	Must delete "c:\sias\cache" folder
 
+3.6.2.25 (February 28, 2025)
 	-1  SIAS Online/NEW MODULE: Entry of Funds at File-Accounts (CSPC Nabua)
 	-1  SIAS Online/Final/Term Grades: Fixed error "Undefined sg.FinalGradeIndex" (CSPC Nabua)
 	-1  SIAS Online/Input Grades: Added support for deleting External grades (CSPC Nabua)
@@ -61,7 +77,7 @@
 	-24 SIAS Online/Report Card: Display quarterly grades as whole numbers (UPHS JONELTA)
 	-25 SIAS Online/Applications for Admission: Added column "Room" (NISU Estancia)
 
-3.6.1.31 (January 31, 2024)
+3.6.1.31 (January 31, 2025)
 	---!!! UPGRADE NOTES !!!--
 	Must delete "c:\sias\cache" folder
 
