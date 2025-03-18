@@ -9,7 +9,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { Separator } from "../ui/separator";
 import { Link } from "react-router-dom";
 
 interface AppSidebarProps {
@@ -24,13 +23,13 @@ export default function AppSidebar({ pageName, menuItems }: AppSidebarProps) {
   }
   return (
     <Sidebar>
-      <SidebarHeader className="bg-[#4996C9] dark:bg-[#004580] py-5">
-        <div className="flex justify-between items-center my-3 text-current">
-          <Link to="/" className="text-md uppercase font-bold">
+      <SidebarHeader className="text-white py-5 bg-[url('/images/hero.svg')] bg-cover bg-center bg-no-repeat">
+        <div className="flex justify-around items-center my-3 text-current">
+          <Link to="/" className="text-sm uppercase font-bold">
             DIGITAL SOFTWARE
           </Link>
-          <Separator orientation="vertical" />
-          <h3 className="uppercase text-sm cursor-default">{pageName}</h3>
+          <p className="m-0 p-0">|</p>
+          <h3 className="uppercase text-xs cursor-default">{pageName}</h3>
         </div>
       </SidebarHeader>
       <SidebarContent>

@@ -36,10 +36,10 @@ export default function ProductPreview() {
         { title: "Brochures", id: "brochure" },
       ]}
     >
-      <section className="w-full flex flex-col gap-5 min-h-screen">
+      <section className="relative w-full flex flex-col gap-5 min-h-screen mb-4">
         {/* HEADER */}
         <MobileNav />
-        <div className="w-full xs:hidden md:flex lg:flex xl:flex 2xl:flex justify-between items-center my-3">
+        <div className="w-full xs:hidden md:flex lg:flex xl:flex 2xl:flex justify-between items-center my-3 px-3 z-10">
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
@@ -56,7 +56,7 @@ export default function ProductPreview() {
           <ModeToggle />
         </div>
 
-        <section className="px-4 gap-2 flex flex-col">
+        <section className="px-4 gap-2 flex flex-col z-10">
           {/* TITLE */}
           <ContentHeader
             title={data?.title}
@@ -134,6 +134,8 @@ export default function ProductPreview() {
             )}
           </ContentCard>
         </section>
+
+        <div className="hidden lg:block xl:block 2xl:block absolute w-full h-full bg-[url('/images/preview-bg.svg')] bg-cover bg-center bg-no-repeat scale-x-[-1] z-0"></div>
       </section>
     </PageLayout>
   );

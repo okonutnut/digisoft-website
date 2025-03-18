@@ -9,7 +9,7 @@ interface FooterProps {
 export default function Footer({ className }: FooterProps) {
   const products = GetAllProducts();
   return (
-    <footer className="w-full text-current flex flex-col justify-start items-center">
+    <footer className="w-full text-current flex flex-col justify-start items-center bg-slate-800 text-white">
       <section className={cn(className, "w-full")}>
         {/* FOOTER */}
         <div className="h-full w-full flex justify-around gap-4 p-4">
