@@ -134,8 +134,8 @@ export default function ProductPreview() {
             )}
           </ContentCard>
         </section>
-
-        <div className="hidden lg:block xl:block 2xl:block absolute w-full h-full bg-[url('/images/preview-bg.svg')] bg-cover bg-center bg-no-repeat scale-x-[-1] z-0"></div>
+        {/* 
+        <div className="hidden lg:block xl:block 2xl:block absolute w-full h-full bg-[url('/images/preview-bg.svg')] bg-cover bg-center bg-no-repeat scale-x-[-1] z-0"></div> */}
       </section>
     </PageLayout>
   );
