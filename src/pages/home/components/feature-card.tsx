@@ -35,7 +35,7 @@ export function FeaturesSectionDemo() {
   ];
   return (
     <section className="relative">
-      <div className="xs:h-[100px] sm:h-[100px] md:h-[300px] lg:h-[300px] xl:h-[300px] 2xl:h-[300px] w-full xs:bg-[url('./images/hero-new.svg')] bg-cover bg-no-repeat bg-bottom rotate-180 "></div>
+      <div className="xs:h-[100px] sm:h-[100px] md:h-[300px] lg:h-[300px] xl:h-[300px] 2xl:h-[300px] w-full xs:bg-[url('/images/hero-new.svg')] bg-cover bg-no-repeat bg-bottom rotate-180 "></div>
       <div className="relative z-20 py-4 lg:py-10 max-w-7xl mx-auto">
         <div className="px-8">
           <h4 className="xs:text-4xl sm:xs:text-4xl md:xs:text-4xl lg:text-5xl xl:text-5xl 2xl:text-5xl font-semibold lg:leading-tight max-w-5xl mx-auto text-center tracking-tight text-[#ffa500]">
@@ -59,7 +59,7 @@ export function FeaturesSectionDemo() {
           </div>
         </div>
       </div>
-      <div className="xs:h-[100px] sm:h-[100px] md:h-[300px] lg:h-[300px] xl:h-[300px] 2xl:h-[300px] w-full xs:bg-[url('./images/hero-new.svg')] bg-cover bg-no-repeat bg-bottom"></div>
+      <div className="xs:h-[100px] sm:h-[100px] md:h-[300px] lg:h-[300px] xl:h-[300px] 2xl:h-[300px] w-full xs:bg-[url('/images/hero-new.svg')] bg-cover bg-no-repeat bg-bottom"></div>
     </section>
   );
 }
