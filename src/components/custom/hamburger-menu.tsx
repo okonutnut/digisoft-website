@@ -27,11 +27,14 @@ export default function HamburgerMenu() {
             <AlignJustify className=" h-10 w-10" />
           </Button>
         </SheetTrigger>
-        <SheetContent className="py-10 flex flex-col gap-4" side={"left"}>
+        <SheetContent
+          className="py-10 flex flex-col gap-4 bg-[#034383] text-white"
+          side={"left"}
+        >
           <Accordion type="single" collapsible>
             <AccordionItem value="item-1" className="border-none">
               <AccordionTrigger className="text-sm font-medium py-0">
-                <span className="flex items-center gap-2">
+                <span className="flex items-center gap-2 hover:text-[#ffa500]">
                   <Boxes className="h-4 w-4" />
                   {menuItems.title}
                 </span>
@@ -49,13 +52,13 @@ export default function HamburgerMenu() {
               </AccordionContent>
             </AccordionItem>
           </Accordion>
-          <span className="flex items-center gap-2">
+          <span className="flex items-center gap-2 hover:text-[#ffa500]">
             <Rocket className="h-4 w-4" />
             <Link to={"/release-notes"} className="text-sm font-medium">
               Release Notes
             </Link>
           </span>
-          <span className="flex items-center gap-2">
+          <span className="flex items-center gap-2 hover:text-[#ffa500]">
             <ListOrdered className="h-4 w-4" />
             <Link to={"/list-of-clients"} className="text-sm font-medium">
               List of Clients

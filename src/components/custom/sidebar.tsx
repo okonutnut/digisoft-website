@@ -23,9 +23,9 @@ export default function AppSidebar({ pageName, menuItems }: AppSidebarProps) {
   }
   return (
     <Sidebar>
-      <SidebarHeader className="text-white py-5 bg-[url('/images/hero.svg')] bg-cover bg-center bg-no-repeat">
-        <div className="flex justify-around items-center my-3 text-current">
-          <Link to="/" className="text-sm uppercase font-bold">
+      <SidebarHeader className="text-[#16294a] pt-7 bg-[url('/images/hero-new.svg')] bg-cover bg-top bg-no-repeat border-b">
+        <div className="flex justify-around items-center my-5 text-current">
+          <Link to="/" className="text-md uppercase font-bold">
             DIGITAL SOFTWARE
           </Link>
           <p className="m-0 p-0">|</p>

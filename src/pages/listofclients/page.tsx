@@ -23,7 +23,7 @@ export default function ListOfClients() {
   });
 
   return (
-    <PageLayout hasNavbar pageName="Clients">
+    <PageLayout hasNavbar pageName="Clients" className="bg-white">
       <section className="container my-[1rem] flex flex-col gap-5 p-0">
         {/* TITLE */}
         <ContentHeader

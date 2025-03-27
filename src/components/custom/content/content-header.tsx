@@ -12,10 +12,14 @@ export default function ContentHeader({
   return (
     <div id={id}>
       {title && (
-        <h1 className="text-4xl mb-3 font-bold text-primary">{title}</h1>
+        <h1 className="text-4xl mb-3 font-bold text-[#ffa500] uppercase">
+          {title}
+        </h1>
       )}
       {subtitle && (
-        <p className="xl:text-md xs:text-sm text-current">{subtitle}</p>
+        <p className="xl:text-md xs:text-sm text-[#16294a] font-medium">
+          {subtitle}
+        </p>
       )}
     </div>
   );

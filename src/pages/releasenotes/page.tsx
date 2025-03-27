@@ -17,7 +17,7 @@ export default function ReleaseNotes() {
   }));
 
   return (
-    <PageLayout hasNavbar>
+    <PageLayout hasNavbar className="bg-white">
       <section className="container min-h-screen mt-[1rem] flex flex-col gap-5 p-0">
         {/* TITLE */}
         <ContentHeader

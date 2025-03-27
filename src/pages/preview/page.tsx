@@ -29,6 +29,7 @@ export default function ProductPreview() {
     <PageLayout
       hasSidebar
       pageName="Products"
+      className="bg-white"
       menuItems={[
         { title: "Overview", id: "top" },
         { title: "Download", id: "download" },
@@ -70,7 +71,7 @@ export default function ProductPreview() {
               <ul>
                 {data?.faq.map((item: string, index: number) => (
                   <li key={index}>
-                    <span className="flex gap-2 2xl:text-lg xs:text-[12px]">
+                    <span className="flex gap-2 2xl:text-lg xs:text-[12px] text-[#16294a]">
                       <Check />
                       <strong>{item}</strong>
                     </span>

@@ -1,6 +1,5 @@
 import React from "react";
 import { cn } from "@/lib/utils";
-import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 
 export function FeaturesSectionDemo() {
   const features = [
@@ -12,14 +11,14 @@ export function FeaturesSectionDemo() {
         "col-span-1 lg:col-span-4 border-b lg:border-r dark:border-neutral-800",
     },
     {
-      title: "LMS in the Philippines",
+      title: "Learning Management System",
       description:
-        "The FIRST and ONLY school software with INTEGRATED Learning Management System (LMS)",
+        "The FIRST and ONLY school software with INTEGRATED Learning Management System",
       skeleton: <SkeletonTwo />,
       className: "border-b col-span-1 lg:col-span-2 dark:border-neutral-800",
     },
     {
-      title: "Continuous Improvement",
+      title: "Continuous & Active Development",
       description:
         "The ONLY school software that is CONTINUOUSLY IMPROVED (Since 1998) DOWNLOADABLE, UPGRADEABLE UNIFIED SYSTEM",
       skeleton: <SkeletonThree />,
@@ -35,30 +34,33 @@ export function FeaturesSectionDemo() {
     },
   ];
   return (
-    <div className="relative z-20 py-10 lg:py-40 max-w-7xl mx-auto">
-      <div className="px-8">
-        <h4 className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white">
-          FEATURING SIAS ONLINE (3.x)
-        </h4>
+    <section className="relative">
+      <div className="xs:h-[100px] sm:h-[100px] md:h-[300px] lg:h-[300px] xl:h-[300px] 2xl:h-[300px] w-full xs:bg-[url('./images/hero-new.svg')] bg-cover bg-no-repeat bg-bottom rotate-180 "></div>
+      <div className="relative z-20 py-4 lg:py-10 max-w-7xl mx-auto">
+        <div className="px-8">
+          <h4 className="xs:text-4xl sm:xs:text-4xl md:xs:text-4xl lg:text-5xl xl:text-5xl 2xl:text-5xl font-semibold lg:leading-tight max-w-5xl mx-auto text-center tracking-tight text-[#ffa500]">
+            SIAS ONLINE (3.x)
+          </h4>
 
-        <p className="text-sm lg:text-base  max-w-2xl  my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300">
-          The best and no. 1 school management system provider in the
-          Philippines.
-        </p>
-      </div>
+          <p className="xs:text-sm sm:text-md md:text-lg lg:text-lg xl:text-lg 2xl:text-lg max-w-2xl my-4 mx-auto text-[#16294a] text-center font-semibold">
+            The best and no. 1 school management system in the Philippines.
+          </p>
+        </div>
 
-      <div className="relative ">
-        <div className="grid grid-cols-1 lg:grid-cols-6 mt-12 xl:border rounded-md dark:border-neutral-800">
-          {features.map((feature) => (
-            <FeatureCard key={feature.title} className={feature.className}>
-              <FeatureTitle>{feature.title}</FeatureTitle>
-              <FeatureDescription>{feature.description}</FeatureDescription>
-              <div className=" h-full w-full">{feature.skeleton}</div>
-            </FeatureCard>
-          ))}
+        <div className="relative">
+          <div className="grid grid-cols-1 lg:grid-cols-6 mt-12 xl:border rounded-md dark:border-neutral-800">
+            {features.map((feature) => (
+              <FeatureCard key={feature.title} className={feature.className}>
+                <FeatureTitle>{feature.title}</FeatureTitle>
+                <FeatureDescription>{feature.description}</FeatureDescription>
+                <div className=" h-full w-full">{feature.skeleton}</div>
+              </FeatureCard>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+      <div className="xs:h-[100px] sm:h-[100px] md:h-[300px] lg:h-[300px] xl:h-[300px] 2xl:h-[300px] w-full xs:bg-[url('./images/hero-new.svg')] bg-cover bg-no-repeat bg-bottom"></div>
+    </section>
   );
 }
 
@@ -78,7 +80,7 @@ const FeatureCard = ({
 
 const FeatureTitle = ({ children }: { children?: React.ReactNode }) => {
   return (
-    <p className=" max-w-5xl mx-auto text-left tracking-tight text-black dark:text-white text-xl md:text-2xl md:leading-snug">
+    <p className=" max-w-5xl mx-auto text-left tracking-tight text-[#ffa500] font-semibold text-xl md:text-2xl md:leading-snug">
       {children}
     </p>
   );
@@ -89,7 +91,7 @@ const FeatureDescription = ({ children }: { children?: React.ReactNode }) => {
     <p
       className={cn(
         "text-sm md:text-base  max-w-4xl text-left mx-auto",
-        "text-neutral-500 text-center font-normal dark:text-neutral-300",
+        "text-[#16294a] text-center font-medium dark:text-neutral-300",
         "text-left max-w-sm mx-0 md:text-sm my-2"
       )}
     >
@@ -114,52 +116,16 @@ export const SkeletonOne = () => {
 };
 
 export const SkeletonTwo = () => {
-  const softwares = [
-    {
-      title: "Moodle",
-      creator: "Australian",
-    },
-    {
-      title: "Google Classroom",
-      creator: "American",
-    },
-    {
-      title: "Microsoft Teams",
-      creator: "American",
-    },
-    {
-      title: "NeoLMS",
-      creator: "American",
-    },
-    {
-      title: "Schoology",
-      creator: "American",
-    },
-    {
-      title: "Canvas",
-      creator: "American",
-    },
-    {
-      title: "Quipper",
-      creator: "Japanese",
-    },
-    {
-      title: "SIAS LMS",
-      creator: "Filipino",
-    },
-  ];
   return (
-    <div className="relative flex flex-col items-start gap-10 h-full overflow-hidden">
-      <Table className="px-3 text-current">
-        <TableBody>
-          {softwares.map((software, idx) => (
-            <TableRow key={idx}>
-              <TableCell className="font-medium">{software.title}</TableCell>
-              <TableCell className="text-right">{software.creator}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>{" "}
+    <div className="w-full h-full mx-auto bg-white group">
+      <div className="flex flex-1 w-full h-full flex-col space-y-2 relative">
+        {/* TODO */}
+        <img
+          src="/images/lms.png"
+          alt="header"
+          className="object-cover object-center mx-auto pt-4"
+        />
+      </div>
     </div>
   );
 };

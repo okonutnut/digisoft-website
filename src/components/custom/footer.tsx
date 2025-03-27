@@ -9,12 +9,12 @@ interface FooterProps {
 export default function Footer({ className }: FooterProps) {
   const products = GetAllProducts();
   return (
-    <footer className="w-full text-current flex flex-col justify-start items-center bg-slate-800 text-white">
+    <footer className="w-full text-current flex flex-col justify-start items-center bg-[#16294a] text-white border-0 p-0 m-0">
       <section className={cn(className, "w-full")}>
         {/* FOOTER */}
-        <div className="h-full w-full flex justify-around gap-4 p-4">
+        <div className="h-full w-full flex justify-between gap-4 p-4">
           <div className="block xs:hidden md:block lg:block xl:block 2xl:block">
-            <label className="uppercase font-bold tracking-widest">
+            <label className="uppercase font-bold tracking-widest text-[#ffa500]">
               products
             </label>
             <ul>
@@ -25,24 +25,25 @@ export default function Footer({ className }: FooterProps) {
               ))}
             </ul>
           </div>
-          {/* <div className="block xs:hidden md:block lg:block xl:block 2xl:block">
-            <label className="text-slate-900 uppercase font-bold tracking-widest">
-              LIST OF CLIENT
+          <div className="block xs:hidden md:block lg:block xl:block 2xl:block">
+            <label className="uppercase font-bold tracking-widest text-[#ffa500]">
+              others
             </label>
             <ul>
-              {listOfClient.map((client, index: number) => (
-                <li key={index} className="mb-1">
-                  <a href={client.link}>{client.title}</a>
-                </li>
-              ))}
+              <li className="mb-1">
+                <Link to={"/list-of-clients"}>List of clients</Link>
+              </li>
+              <li className="mb-1">
+                <Link to={"/list-of-clients"}>Release Notes</Link>
+              </li>
             </ul>
-          </div> */}
+          </div>
           <div className="col-span-full">
-            <label className="uppercase font-bold tracking-widest xs:text-sm">
+            <label className="uppercase font-bold tracking-widest xs:text-sm text-[#ffa500]">
               FOR MORE INFORMATION CONTACT
             </label>
             <div className="mb-5 xs:text-xs">
-              <h1 className="mt-3 font-semibold">THOMAS C. SADUL</h1>
+              <h1 className="mt-3 font-semibold">THOMAS C. SADDUL</h1>
               <h4>President / CEO / Chief Architect</h4>
             </div>
             <ul className="xs:text-xs">

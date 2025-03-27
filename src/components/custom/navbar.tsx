@@ -26,17 +26,17 @@ export default function NavBar() {
     [productArray]
   );
   return (
-    <nav className="w-full text-current bg-[#4996C9] dark:bg-[#004580] 2xl:p-4 xs:p-2 z-50">
+    <nav className="w-full text-white bg-[#004580] 2xl:p-4 xs:p-2 z-50">
       <div className="2xl:container xs:w-full sm:w-full mx-auto flex justify-between items-center">
         {/* HEADER */}
         <span className="flex items-center justify-between xs:justify-between xs:w-screen sm:w-screen md:w-auto lg:w-auto xl:w-auto 2xl:w-auto">
           <HamburgerMenu />
           <Link
             to="/"
-            className="flex items-center gap-1 2xl:text-lg xl:text-lg lg:text-lg md:text-md sm:text-md xs:text-md font-bold text-current"
+            className="flex items-center gap-1 2xl:text-lg xl:text-lg lg:text-lg md:text-md sm:text-md xs:text-md font-bold text-current hover:text-[#ffa500]"
           >
             <img src="/images/logo.png" alt="logo" width={32} />
-            DIGITAL SOFTWARE
+            DIGITAL SOFTWARE PH
           </Link>
           <span className="items-center hidden xs:flex sm:flex md:hidden 2xl:hidden lx:hidden lg:hidden">
             <ModeToggle />
@@ -48,7 +48,7 @@ export default function NavBar() {
           <NavigationMenuList className="w-full flex justify-between space-x-4">
             {menuItems.map((item) => (
               <NavigationMenuItem key={item.title} className="">
-                <NavigationMenuTrigger className="bg-transparent hover:bg-transparent active:bg-transparent focus:bg-transparent">
+                <NavigationMenuTrigger className="bg-transparent hover:bg-transparent active:bg-transparent focus:bg-transparent hover:text-[#ffa500] focus:text-[#ffa500]">
                   {item.title}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -72,7 +72,7 @@ export default function NavBar() {
                 to="/release-notes"
                 className={cn(
                   navigationMenuTriggerStyle(),
-                  "bg-transparent hover:bg-transparent active:bg-transparent focus:bg-transparent"
+                  "bg-transparent hover:bg-transparent active:bg-transparent focus:bg-transparent hover:text-[#ffa500]"
                 )}
               >
                 <NavigationMenuLink>Release Notes</NavigationMenuLink>
@@ -83,7 +83,7 @@ export default function NavBar() {
                 to="/list-of-clients"
                 className={cn(
                   navigationMenuTriggerStyle(),
-                  "bg-transparent hover:bg-transparent active:bg-transparent focus:bg-transparent"
+                  "bg-transparent hover:bg-transparent active:bg-transparent focus:bg-transparent hover:text-[#ffa500]"
                 )}
               >
                 <NavigationMenuLink>List of Clients</NavigationMenuLink>
@@ -92,7 +92,7 @@ export default function NavBar() {
           </NavigationMenuList>
         </NavigationMenu>
 
-        {/* DARK MODE FB */}
+        {/* DARK MODE */}
         <NavigationMenu className="hidden md:block lg:block xl:block 2xl:block">
           <NavigationMenuList className="w-full flex justify-between">
             <NavigationMenuItem>
@@ -120,8 +120,10 @@ const ListItem = React.forwardRef<
           )}
           {...props}
         >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-xs leading-snug text-muted-foreground">
+          <div className="text-sm font-medium leading-none text-[#ffa500]">
+            {title}
+          </div>
+          <p className="line-clamp-2 text-xs leading-snug text-[#16294a]">
             {children}
           </p>
         </Link>
