@@ -29,7 +29,7 @@ export default function ProductPreview() {
     <PageLayout
       hasSidebar
       pageName="Products"
-      className="bg-white"
+      className="bg-white dark:bg-[#004580]"
       menuItems={[
         { title: "Overview", id: "top" },
         { title: "Download", id: "download" },
@@ -44,7 +44,9 @@ export default function ProductPreview() {
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
-                <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                <BreadcrumbLink href="/" className="dark:text-white">
+                  Home
+                </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
@@ -71,7 +73,7 @@ export default function ProductPreview() {
               <ul>
                 {data?.faq.map((item: string, index: number) => (
                   <li key={index}>
-                    <span className="flex gap-2 2xl:text-lg xs:text-[12px] text-[#16294a]">
+                    <span className="flex gap-2 2xl:text-lg xs:text-[12px] text-[#16294a] dark:text-white">
                       <Check />
                       <strong>{item}</strong>
                     </span>
@@ -86,7 +88,7 @@ export default function ProductPreview() {
             <div className="flex items-center justify-start gap-3 flex-wrap">
               {data?.download && data.download.length > 0 ? (
                 <DownloadVersion
-                  className="xs:min-w-full sm:min-w-full md:min-w-[200px] 2xl:min-w-[500px] xl:min-w-[400px] lg:min-w-[300px]"
+                  className="xs:min-w-full sm:min-w-full md:min-w-[200px] 2xl:min-w-[500px] xl:min-w-[400px] lg:min-w-[300px] dark:bg-[#004580] bg-white"
                   options={data?.download.map(
                     (dl: { version: string; link: string }) => {
                       return { label: dl.version, value: dl.link };
@@ -108,7 +110,7 @@ export default function ProductPreview() {
             {getReleaseNotes && getReleaseNotes != "No release notes found." ? (
               <TextArea value={getReleaseNotes} className="xs:text-xs" />
             ) : (
-              <p className="italic text-slate-600 text-sm">
+              <p className="italic text-slate-600 dark:text-slate-100 text-sm">
                 No release notes available.
               </p>
             )}
@@ -129,7 +131,7 @@ export default function ProductPreview() {
                 )}
               </ul>
             ) : (
-              <p className="italic text-slate-600 text-sm">
+              <p className="italic text-slate-600 dark:text-slate-100 text-sm">
                 No brochues available.
               </p>
             )}

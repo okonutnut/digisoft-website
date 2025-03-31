@@ -45,7 +45,7 @@ export function FeaturesSectionDemo() {
             SIAS ONLINE (3.x)
           </h4>
 
-          <p className="xs:text-sm sm:text-md md:text-lg lg:text-lg xl:text-lg 2xl:text-lg max-w-2xl my-4 mx-auto text-[#16294a] text-center font-semibold">
+          <p className="xs:text-sm sm:text-md md:text-lg lg:text-lg xl:text-lg 2xl:text-lg max-w-2xl my-4 mx-auto text-[#16294a] dark:text-white text-center font-semibold">
             The best and no. 1 school management system in the Philippines.
           </p>
         </div>
@@ -96,7 +96,7 @@ const FeatureDescription = ({ children }: { children?: React.ReactNode }) => {
     <p
       className={cn(
         "text-sm md:text-base  max-w-4xl text-left mx-auto",
-        "text-[#16294a] text-center font-medium dark:text-neutral-300",
+        "text-[#16294a] text-center font-medium dark:text-white",
         "text-left max-w-sm mx-0 md:text-sm my-2"
       )}
     >
@@ -122,8 +122,8 @@ export const SkeletonOne = () => {
 
 export const SkeletonTwo = () => {
   return (
-    <div className="w-full h-full mx-auto bg-white group">
-      <div className="flex flex-1 w-full h-full flex-col space-y-2 relative">
+    <div className="w-full h-auto mx-auto bg-white group">
+      <div className="flex flex-1 w-full h-auto flex-col space-y-2 relative mt-10">
         {/* TODO */}
         <img
           src="/images/lms.png"

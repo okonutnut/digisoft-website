@@ -4,7 +4,7 @@ import { FeaturesSectionDemo } from "./components/feature-card";
 
 export default function HomePage() {
   return (
-    <PageLayout className="bg-white" hasNavbar>
+    <PageLayout className="bg-white dark:bg-[#004580]" hasNavbar>
       <ProductCarousel />
       <FeaturesSectionDemo />
     </PageLayout>

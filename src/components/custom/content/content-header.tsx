@@ -17,7 +17,7 @@ export default function ContentHeader({
         </h1>
       )}
       {subtitle && (
-        <p className="xl:text-md xs:text-sm text-[#16294a] font-medium">
+        <p className="xl:text-md xs:text-sm text-[#16294a] dark:text-white font-medium">
           {subtitle}
         </p>
       )}

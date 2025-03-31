@@ -23,8 +23,12 @@ export default function ListOfClients() {
   });
 
   return (
-    <PageLayout hasNavbar pageName="Clients" className="bg-white">
-      <section className="container my-[1rem] flex flex-col gap-5 p-0">
+    <PageLayout
+      hasNavbar
+      pageName="Clients"
+      className="bg-white dark:bg-[#004580]"
+    >
+      <section className="min-h-screen container py-[1rem] flex flex-col gap-5 p-0">
         {/* TITLE */}
         <ContentHeader
           title="List of Clients"

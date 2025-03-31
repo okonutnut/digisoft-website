@@ -26,7 +26,7 @@ export default function NavBar() {
     [productArray]
   );
   return (
-    <nav className="w-full text-white bg-[#004580] 2xl:p-4 xs:p-2 z-50 shadow-lg">
+    <nav className="w-full text-white bg-[#004580] 2xl:p-4 xs:p-2 z-50">
       <div className="2xl:container xs:w-full sm:w-full mx-auto flex justify-between items-center">
         {/* HEADER */}
         <span className="flex items-center justify-between xs:justify-between xs:w-screen sm:w-screen md:w-auto lg:w-auto xl:w-auto 2xl:w-auto">
@@ -51,7 +51,7 @@ export default function NavBar() {
                 <NavigationMenuTrigger className="bg-transparent hover:bg-transparent active:bg-transparent focus:bg-transparent hover:text-[#ffa500] focus:text-[#ffa500]">
                   {item.title}
                 </NavigationMenuTrigger>
-                <NavigationMenuContent>
+                <NavigationMenuContent className="bg-white dark:bg-[#004580]">
                   <ul className="grid grid-cols-2 gap-3 p-4 w-[500px]">
                     {item.items.map((component) => (
                       <ListItem
@@ -123,7 +123,7 @@ const ListItem = React.forwardRef<
           <div className="text-sm font-medium leading-none text-[#ffa500]">
             {title}
           </div>
-          <p className="line-clamp-2 text-xs leading-snug text-[#16294a]">
+          <p className="line-clamp-2 text-xs leading-snug text-[#16294a] dark:text-white">
             {children}
           </p>
         </Link>

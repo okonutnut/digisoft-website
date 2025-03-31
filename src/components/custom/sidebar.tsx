@@ -22,7 +22,7 @@ export default function AppSidebar({ pageName, menuItems }: AppSidebarProps) {
   }
   return (
     <Sidebar>
-      <SidebarHeader className="text-[#16294a] pt-5 bg-[url('/images/overlay/top.svg')] bg-cover bg-top bg-no-repeat">
+      <SidebarHeader className="text-[#16294a] dark:text-white dark:bg-[#004580] pt-5 bg-[url('/images/overlay/top.svg')] bg-cover bg-top bg-no-repeat border-b">
         <div className="flex justify-around items-center my-5 text-current">
           <Link to="/" className="text-md uppercase font-bold">
             DIGITAL SOFTWARE

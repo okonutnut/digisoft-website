@@ -41,7 +41,7 @@ body, html {
   
 
   .dark {
-    --background: 203.9 10% 6%;
+    --background: 208, 100%, 25%;
     --foreground: 203.9 0% 92%;
     --card: 203.9 0% 2%;
     --card-foreground: 203.9 0% 92%;
