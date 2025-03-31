@@ -15,7 +15,7 @@ export default function ProductCarousel() {
     <>
       <Carousel
         plugins={[plugin.current]}
-        className="h-[87vh] w-full bg-white dark:bg-[#004580] flex items-center justify-center relative m-0 p-0"
+        className="h-[90vh] w-full bg-white dark:bg-[#004580] flex items-center justify-center relative m-0 p-0"
         id="element"
       >
         <div className="absolute top-0 left-0 w-full h-[300px] bg-[url('/images/overlay/top.svg')] bg-cover bg-no-repeat bg-bottom"></div>
