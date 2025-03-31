@@ -26,7 +26,7 @@ export default function NavBar() {
     [productArray]
   );
   return (
-    <nav className="w-full text-white bg-[#004580] 2xl:p-4 xs:p-2 z-50">
+    <nav className="w-full text-white bg-[#004580] 2xl:p-4 xs:p-2 z-50 shadow-lg">
       <div className="2xl:container xs:w-full sm:w-full mx-auto flex justify-between items-center">
         {/* HEADER */}
         <span className="flex items-center justify-between xs:justify-between xs:w-screen sm:w-screen md:w-auto lg:w-auto xl:w-auto 2xl:w-auto">

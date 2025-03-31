@@ -1,7 +1,6 @@
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarHeader,
@@ -23,7 +22,7 @@ export default function AppSidebar({ pageName, menuItems }: AppSidebarProps) {
   }
   return (
     <Sidebar>
-      <SidebarHeader className="text-[#16294a] pt-7 bg-[url('/images/hero-new.svg')] bg-cover bg-top bg-no-repeat border-b">
+      <SidebarHeader className="text-[#16294a] pt-5 bg-[url('/images/overlay/top.svg')] bg-cover bg-top bg-no-repeat">
         <div className="flex justify-around items-center my-5 text-current">
           <Link to="/" className="text-md uppercase font-bold">
             DIGITAL SOFTWARE
@@ -32,7 +31,7 @@ export default function AppSidebar({ pageName, menuItems }: AppSidebarProps) {
           <h3 className="uppercase text-xs cursor-default">{pageName}</h3>
         </div>
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className="bg-[#004580] text-white">
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -48,7 +47,6 @@ export default function AppSidebar({ pageName, menuItems }: AppSidebarProps) {
         </SidebarGroup>
         <SidebarGroup />
       </SidebarContent>
-      <SidebarFooter />
     </Sidebar>
   );
 }

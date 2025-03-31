@@ -15,10 +15,10 @@ export default function ProductCarousel() {
     <>
       <Carousel
         plugins={[plugin.current]}
-        className="h-screen w-full bg-white flex items-center justify-center relative"
+        className="h-[87vh] w-full bg-white flex items-center justify-center relative m-0 p-0"
         id="element"
       >
-        <div className="absolute bottom-0 left-0 w-full h-full bg-[url('/images/hero-new.svg')] bg-cover bg-no-repeat bg-bottom"></div>
+        <div className="absolute top-0 left-0 w-full h-[300px] bg-[url('/images/overlay/top.svg')] bg-cover bg-no-repeat bg-bottom"></div>
         <CarouselContent>
           {products.map((product, index: number) => (
             <CarouselItem key={index}>

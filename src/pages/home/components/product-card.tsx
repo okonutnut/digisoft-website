@@ -22,7 +22,7 @@ export default function ProductCard({
           {description}
         </span>
         <Link to={link}>
-          <Button className="w-[130px] xs:text-xs uppercase dark:text-white bg-[#034383] hover:bg-[#4294ce] focus:bg-[#034383]">
+          <Button className="w-[130px] xs:text-xs uppercase dark:text-white bg-[#034383] hover:bg-[#4294ce] focus:bg-[#034383] shadow-lg">
             Download
           </Button>
         </Link>
