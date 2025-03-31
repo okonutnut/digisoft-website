@@ -77,7 +77,7 @@ export function DownloadVersion({ options, className }: DownloadVersionProps) {
           target="_blank"
           className="xs:w-full sm:w-full md:w-[200px] lg:w-[200px] xl:w-[200px] 2xl:w-[200px]"
         >
-          <Button className="w-full dark:text-white bg-[#16294a]">
+          <Button className="w-full dark:text-white bg-[#16294a] hover:bg-[#034383] focus:bg-[#16294a]">
             Download
           </Button>
         </Link>
