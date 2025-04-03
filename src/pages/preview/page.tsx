@@ -37,7 +37,7 @@ export default function ProductPreview() {
         { title: "Brochures", id: "brochure" },
       ]}
     >
-      <section className="relative w-full flex flex-col gap-5 min-h-screen mb-4">
+      <section className="relative w-full flex flex-col min-h-screen">
         {/* HEADER */}
         <MobileNav />
         <div className="w-full xs:hidden md:flex lg:flex xl:flex 2xl:flex justify-between items-center my-3 px-3 z-10">
@@ -88,7 +88,7 @@ export default function ProductPreview() {
             <div className="flex items-center justify-start gap-3 flex-wrap">
               {data?.download && data.download.length > 0 ? (
                 <DownloadVersion
-                  className="xs:min-w-full sm:min-w-full md:min-w-[200px] 2xl:min-w-[500px] xl:min-w-[400px] lg:min-w-[300px] dark:bg-[#004580] bg-white"
+                  className="xs:min-w-full sm:min-w-full md:min-w-[200px] 2xl:min-w-[500px] xl:min-w-[200px] lg:min-w-[300px] dark:bg-[#004580] bg-white"
                   options={data?.download.map(
                     (dl: { version: string; link: string }) => {
                       return { label: dl.version, value: dl.link };
@@ -138,6 +138,9 @@ export default function ProductPreview() {
           </ContentCard>
         </section>
       </section>
+
+      {/* OVERLAY BOTTOM */}
+      <div className="w-full xs:h-[120px] sm:h-[200px] md:h-[200px] lg:h-[400px] xl:h-[400px] 2xl:h-[200px] bg-[url('/images/overlay/bottom.svg')] bg-cover bg-no-repeat bg-bottom p-0 m-0"></div>
     </PageLayout>
   );
 }

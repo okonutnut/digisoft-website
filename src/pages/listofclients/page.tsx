@@ -28,7 +28,7 @@ export default function ListOfClients() {
       pageName="Clients"
       className="bg-white dark:bg-[#004580]"
     >
-      <section className="min-h-screen container py-[1rem] flex flex-col gap-5 p-0">
+      <section className="min-h-[80vh] container py-[1rem] flex flex-col gap-5 p-0">
         {/* TITLE */}
         <ContentHeader
           title="List of Clients"
@@ -52,6 +52,8 @@ export default function ListOfClients() {
           </Accordion>
         </ContentCard>
       </section>
+      {/* OVERLAY BOTTOM */}
+      <div className="w-full xs:h-[120px] sm:h-[200px] md:h-[200px] lg:h-[400px] xl:h-[400px] 2xl:h-[400px] bg-[url('/images/overlay/bottom.svg')] bg-cover bg-no-repeat bg-bottom p-0 m-0"></div>
     </PageLayout>
   );
 }

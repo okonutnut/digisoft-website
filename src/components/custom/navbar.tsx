@@ -44,7 +44,7 @@ export default function NavBar() {
         </span>
 
         {/* MENU ITEMS */}
-        <NavigationMenu className="hidden md:block lg:block xl:block 2xl:block">
+        <NavigationMenu className="hidden md:block lg:block xl:block 2xl:block z-30">
           <NavigationMenuList className="w-full flex justify-between space-x-4">
             {menuItems.map((item) => (
               <NavigationMenuItem key={item.title} className="">
@@ -52,7 +52,7 @@ export default function NavBar() {
                   {item.title}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="bg-white dark:bg-[#004580]">
-                  <ul className="grid grid-cols-2 gap-3 p-4 w-[500px]">
+                  <ul className="grid grid-cols-2 gap-3 p-4 w-[500px] z-50">
                     {item.items.map((component) => (
                       <ListItem
                         className="text-primary col-span-full"

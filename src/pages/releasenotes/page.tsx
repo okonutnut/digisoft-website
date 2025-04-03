@@ -18,7 +18,7 @@ export default function ReleaseNotes() {
 
   return (
     <PageLayout hasNavbar className="bg-white dark:bg-[#004580]">
-      <section className="container min-h-screen mt-[1rem] flex flex-col gap-5 p-0">
+      <section className="container mt-[1rem] flex flex-col gap-5 p-0">
         {/* TITLE */}
         <ContentHeader
           title="Release Notes"
@@ -44,6 +44,8 @@ export default function ReleaseNotes() {
           </Accordion>
         </ContentCard>
       </section>
+      {/* OVERLAY BOTTOM */}
+      <div className="w-full xs:h-[120px] sm:h-[200px] md:h-[200px] lg:h-[400px] xl:h-[400px] 2xl:h-[400px] bg-[url('/images/overlay/bottom.svg')] bg-cover bg-no-repeat bg-bottom p-0 m-0"></div>
     </PageLayout>
   );
 }
