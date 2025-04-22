@@ -21,11 +21,9 @@ export default function ProductCard({
         <span className="w-full xl:w-[40%] uppercase 2xl:text-4xl xl:text-2xl xs:text-xs font-bold text-center 2xl:mb-10 xs:mb-4 cursor-default select-none text-[#16294a] dark:text-white">
           {description}
         </span>
-        <Link to={link}>
-          <Button className="w-[130px] xs:text-xs uppercase dark:text-white bg-[#16294a] hover:bg-[#034383] focus:bg-[#16294a]">
-            View More
-          </Button>
-        </Link>
+        <Button className="w-[130px] xs:text-xs uppercase dark:text-white bg-[#16294a] hover:bg-[#034383] focus:bg-[#16294a]">
+          <Link to={link}>View More</Link>
+        </Button>
       </section>
     </>
   );

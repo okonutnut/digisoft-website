@@ -9,10 +9,10 @@ export default function MobileNav() {
         <SidebarTrigger />
         <Link
           to="/"
-          className="flex items-center gap-1 2xl:text-lg xl:text-lg lg:text-lg md:text-md sm:text-md xs:text-md font-bold text-current"
+          className="flex items-center gap-1 2xl:text-lg xl:text-lg lg:text-lg md:text-md sm:text-md xs:text-md font-bold text-current uppercase"
         >
           <img src="/images/logo.png" alt="logo" width={32} />
-          DIGITAL SOFTWARE PH
+          Digital Software Corp
         </Link>
         <ModeToggle />
       </nav>

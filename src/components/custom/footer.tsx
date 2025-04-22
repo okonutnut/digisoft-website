@@ -58,10 +58,7 @@ export default function Footer({ className }: FooterProps) {
                 </li>
                 <li className="flex items-center gap-2 mb-1">
                   <MapPin className="w-4" />
-                  <span>
-                    29/F Penthouse, World Plaza, 5th Avenue, Bonifacio Global
-                    City, Taguig, Philippines
-                  </span>
+                  <span>Paranaque City, Philippines</span>
                 </li>
                 <li className="flex items-center gap-2 mb-1">
                   <Facebook className="w-4" />
@@ -79,7 +76,8 @@ export default function Footer({ className }: FooterProps) {
           {/* COPYRIGHT */}
           <div className="text-sm text-center pb-2 xs:text-[12px]">
             <p>All Rights Reserved 2003-2019</p>
-            <p>Digital Software &copy; 2003-2019</p>
+            <p>Digital Software Corporation &copy; 2003-2019</p>
+            <p>Designed by Okonut</p>
           </div>
         </section>
       </footer>

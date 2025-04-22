@@ -31,7 +31,7 @@ export default function AppSidebar({ pageName, menuItems }: AppSidebarProps) {
           <h3 className="uppercase text-xs cursor-default">{pageName}</h3>
         </div>
       </SidebarHeader>
-      <SidebarContent className="bg-[#004580] text-white">
+      <SidebarContent className="bg-white dark:bg-[#004580] text-black dark:text-white">
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
