@@ -19,8 +19,8 @@ export default defineConfig({
         swDest: "dist/sw.js",
       },
       manifest: {
-        name: "Digital Software PH",
-        short_name: "DIGISOFT PH",
+        name: "Digital Software Corporation",
+        short_name: "DIGISOFT CORP",
         icons: [
           {
             "src": "images/pwa-64x64.png",
