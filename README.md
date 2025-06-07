@@ -1,5 +1,8 @@
 # Redesign of Digital Software Corporation Website
 
+## Tech Stack
+- Vite React
+
 ## Dependencies
 - Node.js (preferred latest version)
 
