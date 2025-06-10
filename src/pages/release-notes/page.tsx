@@ -22,11 +22,11 @@ export default function ReleaseNotes() {
         {/* TITLE */}
         <ContentHeader
           title="Release Notes"
-          subtitle="List of release notes of all products"
+          subtitle="List of release notes for all products"
         />
 
         {/* ACCORDION OF RELEASE NOTES */}
-        <ContentCard>
+        <ContentCard className="min-h-[50vh]">
           <Accordion type="single" collapsible>
             {products.map((product, index: number) => (
               <AccordionItem key={index} value={`item-${index}`}>
@@ -34,7 +34,7 @@ export default function ReleaseNotes() {
                 <AccordionContent>
                   <ViewReleaseNotesTextArea
                     title={product.title}
-                    code={product.code}
+                    code={product.code as string}
                   >
                     <div className="font-medium">{product.title}</div>
                   </ViewReleaseNotesTextArea>
@@ -44,6 +44,7 @@ export default function ReleaseNotes() {
           </Accordion>
         </ContentCard>
       </section>
+
       {/* OVERLAY BOTTOM */}
       <div className="w-full xs:h-[120px] sm:h-[200px] md:h-[200px] lg:h-[400px] xl:h-[400px] 2xl:h-[400px] bg-[url('/images/overlay/bottom.svg')] bg-cover bg-no-repeat bg-bottom p-0 m-0"></div>
     </PageLayout>

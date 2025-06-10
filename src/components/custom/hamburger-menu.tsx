@@ -44,7 +44,7 @@ export default function HamburgerMenu() {
                   {menuItems.items.map((component, index: number) => (
                     <li className="my-2" key={index}>
                       <Link key={index} to={component.href} className="text-sm">
-                        {component.code}
+                        {component.code as string}
                       </Link>
                     </li>
                   ))}

@@ -1,5 +1,5 @@
 import TextArea from "@/components/custom/textarea";
-import useReleaseNotes from "@/hooks/useReleaseNotes";
+import useReleaseNotes from "@/hooks/read-notes";
 
 interface ViewReleaseNotesTextAreaProps {
   children: React.ReactNode;

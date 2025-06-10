@@ -6,7 +6,7 @@ import ContentHeader from "@/components/custom/content/content-header";
 import { GetProductDetails } from "@/hooks/read-excel";
 import TextArea from "@/components/custom/textarea";
 import { DownloadVersion } from "./components/download-combobox";
-import useReleaseNotes from "@/hooks/useReleaseNotes";
+import useReleaseNotes from "@/hooks/read-notes";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -63,15 +63,15 @@ export default function ProductPreview() {
           {/* TITLE */}
           <ContentHeader
             title={data?.title}
-            subtitle={data?.description}
+            subtitle={data?.description as string}
             id="top"
           />
 
           {/* FAQ */}
-          {data?.faq && data?.faq.length > 0 && (
+          {Array.isArray(data?.faq) && data.faq.length > 0 && (
             <ContentCard title="FAQ" id="faq">
               <ul>
-                {data?.faq.map((item: string, index: number) => (
+                {(data.faq as string[]).map((item, index) => (
                   <li key={index}>
                     <span className="flex gap-2 2xl:text-lg xs:text-[12px] text-[#16294a] dark:text-white">
                       <Check />
@@ -89,11 +89,11 @@ export default function ProductPreview() {
               {data?.download && data.download.length > 0 ? (
                 <DownloadVersion
                   className="xs:min-w-full sm:min-w-full md:min-w-[200px] 2xl:min-w-[500px] xl:min-w-[200px] lg:min-w-[300px] dark:bg-[#004580] bg-white"
-                  options={data?.download.map(
-                    (dl: { version: string; link: string }) => {
-                      return { label: dl.version, value: dl.link };
-                    }
-                  )}
+                  options={(
+                    data?.download as { version: string; link: string }[]
+                  ).map((dl) => {
+                    return { label: dl.version, value: dl.link };
+                  })}
                 />
               ) : (
                 "No download available."
@@ -118,17 +118,21 @@ export default function ProductPreview() {
 
           {/* BROCHURES */}
           <ContentCard title="BROCHURES" id="brochure">
-            {data?.brochure && data?.brochure.length > 0 ? (
+            {Array.isArray(data?.brochure) && data.brochure.length > 0 ? (
               <ul className="flex justify-start items-center gap-3 flex-wrap">
-                {data?.brochure.map(
-                  (item: { title: string; link: string }, index: number) => (
+                {data.brochure
+                  .filter(
+                    (item): item is { title: string; link: string } =>
+                      typeof item.title === "string" &&
+                      typeof item.link === "string"
+                  )
+                  .map((item, index) => (
                     <li key={index}>
                       <Link to={item.link} className="text-sm underline">
                         {item.title}
                       </Link>
                     </li>
-                  )
-                )}
+                  ))}
               </ul>
             ) : (
               <p className="italic text-slate-600 dark:text-slate-100 text-sm">

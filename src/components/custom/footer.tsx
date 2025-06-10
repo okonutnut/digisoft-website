@@ -21,7 +21,7 @@ export default function Footer({ className }: FooterProps) {
               <ul>
                 {products.map((product, index: number) => (
                   <li key={index} className="mb-1">
-                    <a href={product.href}>{product.code}</a>
+                    <a href={product.href}>{product.code as string}</a>
                   </li>
                 ))}
               </ul>

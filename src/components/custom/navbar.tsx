@@ -60,7 +60,7 @@ export default function NavBar() {
                         title={component.title}
                         to={component.href}
                       >
-                        {component.short_des}
+                        {component.short_des as React.ReactNode}
                       </ListItem>
                     ))}
                   </ul>
@@ -68,26 +68,26 @@ export default function NavBar() {
               </NavigationMenuItem>
             ))}
             <NavigationMenuItem>
-              <Link
-                to="/release-notes"
+              <NavigationMenuLink
+                href="/release-notes"
                 className={cn(
                   navigationMenuTriggerStyle(),
                   "bg-transparent hover:bg-transparent active:bg-transparent focus:bg-transparent hover:text-[#ffa500]"
                 )}
               >
-                <NavigationMenuLink>Release Notes</NavigationMenuLink>
-              </Link>
+                Release Notes
+              </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link
-                to="/list-of-clients"
+              <NavigationMenuLink
+                href="/list-of-clients"
                 className={cn(
                   navigationMenuTriggerStyle(),
                   "bg-transparent hover:bg-transparent active:bg-transparent focus:bg-transparent hover:text-[#ffa500]"
                 )}
               >
-                <NavigationMenuLink>List of Clients</NavigationMenuLink>
-              </Link>
+                List of Clients
+              </NavigationMenuLink>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
